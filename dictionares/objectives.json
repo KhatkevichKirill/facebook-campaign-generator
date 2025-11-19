@@ -1,0 +1,13 @@
+{
+  "App promotion": "OUTCOME_APP_PROMOTION",
+  "Traffic": "LINK_CLICKS",
+  "Conversions": "CONVERSIONS",
+  "Engagement": "POST_ENGAGEMENT",
+  "Reach": "REACH",
+  "Video Views": "VIDEO_VIEWS",
+  "Lead Generation": "LEAD_GENERATION",
+  "Messages": "MESSAGES",
+  "Store Traffic": "STORE_TRAFFIC",
+  "Catalog Sales": "CATALOG_SALES"
+}
+

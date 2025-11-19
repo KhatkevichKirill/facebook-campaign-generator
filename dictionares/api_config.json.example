@@ -1,0 +1,5 @@
+{
+  "access_token": "YOUR_ACCESS_TOKEN_HERE",
+  "api_version": "v23.0",
+  "base_url": "https://graph.facebook.com"
+}

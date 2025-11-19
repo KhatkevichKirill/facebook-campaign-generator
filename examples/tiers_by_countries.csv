@@ -1,0 +1,241 @@
+Geo tier,Country,Human readable Country
+Africa,AO,Angola
+Africa,BF,Burkina Faso
+Africa,BI,Burundi
+Africa,BJ,Benin
+Africa,BW,Botswana
+Africa,CD,Democratic Republic of the Congo
+Africa,CF,Central African Republic
+Africa,CG,Republic of the Congo
+Africa,CI,Ivory Coast
+Africa,CM,Cameroon
+Africa,CV,Cape Verde
+Africa,ER,Eritrea
+Africa,ET,Ethiopia
+Africa,GA,Gabon
+Africa,GH,Ghana
+Africa,GM,Gambia
+Africa,GN,Guinea
+Africa,GQ,Equatorial Guinea
+Africa,GW,Guinea-Bissau
+Africa,KE,Kenya
+Africa,LR,Liberia
+Africa,LS,Lesotho
+Africa,MG,Madagascar
+Africa,ML,Mali
+Africa,MU,Mauritius
+Africa,MW,Malawi
+Africa,MZ,Mozambique
+Africa,NA,Namibia
+Africa,NE,Niger
+Africa,NG,Nigeria
+Africa,RE,Reunion
+Africa,RW,Rwanda
+Africa,SL,Sierra Leone
+Africa,SN,Senegal
+Africa,SO,Somalia
+Africa,SS,South Sudan
+Africa,SZ,Swaziland
+Africa,TD,Chad
+Africa,TG,Togo
+Africa,TZ,Tanzania
+Africa,UG,Uganda
+Africa,ZA,South Africa
+Africa,ZM,Zambia
+Africa,ZW,Zimbabwe
+Arabian,AE,United Arab Emirates
+Arabian,BH,Bahrain
+Arabian,DZ,Algeria
+Arabian,EG,Egypt
+Arabian,IQ,Iraq
+Arabian,JO,Jordan
+Arabian,KM,Comoros
+Arabian,KW,Kuwait
+Arabian,LB,Lebanon
+Arabian,LY,Libya
+Arabian,MA,Morocco
+Arabian,MR,Mauritania
+Arabian,OM,Oman
+Arabian,PS,Palestinian Territory
+Arabian,QA,Qatar
+Arabian,SA,Saudi Arabia
+Arabian,SD,Sudan
+Arabian,SY,Syria
+Arabian,TN,Tunisia
+Arabian,YE,Yemen
+Asia,AF,Afghanistan
+Asia,BD,Bangladesh
+Asia,BN,Brunei
+Asia,BT,Bhutan
+Asia,CN,China
+Asia,FJ,Fiji
+Asia,FM,Micronesia
+Asia,GE,Georgia
+Asia,HK,Hong Kong
+Asia,ID,Indonesia
+Asia,IL,Israel
+Asia,IN,India
+Asia,IR,Iran
+Asia,JP,Japan
+Asia,KH,Cambodia
+Asia,KR,South Korea
+Asia,LA,Laos
+Asia,LK,Sri Lanka
+Asia,MN,Mongolia
+Asia,MO,Macao
+Asia,MV,Maldives
+Asia,MY,Malaysia
+Asia,NP,Nepal
+Asia,PG,Papua New Guinea
+Asia,PH,Philippines
+Asia,PK,Pakistan
+Asia,SB,Solomon Islands
+Asia,SG,Singapore
+Asia,TH,Thailand
+Asia,TL,East Timor
+Asia,TR,Turkey
+Asia,TW,Taiwan
+Asia,VN,Vietnam
+CIS,AM,Armenia
+CIS,AZ,Azerbaijan
+CIS,BY,Belarus
+CIS,KG,Kyrgyzstan
+CIS,KZ,Kazakhstan
+CIS,MD,Moldova
+CIS,RU,Russia
+CIS,TJ,Tajikistan
+CIS,TM,Turkmenistan
+CIS,UA,Ukraine
+CIS,UZ,Uzbekistan
+Europe,AL,Albania
+Europe,AT,Austria
+Europe,BA,Bosnia and Herzegovina
+Europe,BE,Belgium
+Europe,BG,Bulgaria
+Europe,CH,Switzerland
+Europe,CY,Cyprus
+Europe,CZ,Czech Republic
+Europe,DE,Germany
+Europe,DK,Denmark
+Europe,EE,Estonia
+Europe,ES,Spain
+Europe,FI,Finland
+Europe,FR,France
+Europe,GR,Greece
+Europe,HR,Croatia
+Europe,HU,Hungary
+Europe,IS,Iceland
+Europe,IT,Italy
+Europe,LT,Lithuania
+Europe,LU,Luxembourg
+Europe,LV,Latvia
+Europe,ME,Montenegro
+Europe,MK,Macedonia
+Europe,MT,Malta
+Europe,NL,Netherlands
+Europe,NO,Norway
+Europe,PL,Poland
+Europe,PT,Portugal
+Europe,RO,Romania
+Europe,RS,Serbia
+Europe,SE,Sweden
+Europe,SI,Slovenia
+Europe,SK,Slovakia
+LatAm,AR,Argentina
+LatAm,BO,Bolivia
+LatAm,BR,Brazil
+LatAm,BS,Bahamas
+LatAm,BZ,Belize
+LatAm,CL,Chile
+LatAm,CO,Colombia
+LatAm,CR,Costa Rica
+LatAm,CU,Cuba
+LatAm,DO,Dominican Republic
+LatAm,EC,Ecuador
+LatAm,GP,Guadeloupe
+LatAm,GT,Guatemala
+LatAm,GY,Guyana
+LatAm,HN,Honduras
+LatAm,HT,Haiti
+LatAm,JM,Jamaica
+LatAm,MQ,Martinique
+LatAm,MX,Mexico
+LatAm,NI,Nicaragua
+LatAm,PA,Panama
+LatAm,PE,Peru
+LatAm,PR,Puerto Rico
+LatAm,PY,Paraguay
+LatAm,SR,Suriname
+LatAm,SV,El Salvador
+LatAm,TT,Trinidad and Tobago
+LatAm,UY,Uruguay
+LatAm,VE,Venezuela
+Other,AD,Andorra
+Other,AG,Antigua and Barbuda
+Other,AI,Anguilla
+Other,AS,American Samoa
+Other,AW,Aruba
+Other,AX,Aland Islands
+Other,BB,Barbados
+Other,BL,Saint Barthelemy
+Other,BM,Bermuda
+Other,BQ,"Bonaire, Saint Eustatius and Saba "
+Other,CK,Cook Islands
+Other,CW,Curacao
+Other,DJ,Djibouti
+Other,DM,Dominica
+Other,FK,Falkland Islands
+Other,FO,Faroe Islands
+Other,GD,Grenada
+Other,GF,French Guiana
+Other,GG,Guernsey
+Other,GI,Gibraltar
+Other,GL,Greenland
+Other,GU,Guam
+Other,IC,IC
+Other,IM,Isle of Man
+Other,IO,British Indian Ocean Territory
+Other,JB,JB
+Other,JE,Jersey
+Other,KI,Kiribati
+Other,KN,Saint Kitts and Nevis
+Other,KY,Cayman Islands
+Other,LC,Saint Lucia
+Other,LI,Liechtenstein
+Other,MC,Monaco
+Other,MF,Saint Martin
+Other,MH,Marshall Islands
+Other,MM,Myanmar
+Other,MP,Northern Mariana Islands
+Other,MS,Montserrat
+Other,NC,New Caledonia
+Other,NF,Norfolk Island
+Other,NR,Nauru
+Other,NU,Niue
+Other,PF,French Polynesia
+Other,PW,Palau
+Other,SC,Seychelles
+Other,SH,Saint Helena
+Other,SJ,Svalbard and Jan Mayen
+Other,SM,San Marino
+Other,ST,Sao Tome and Principe
+Other,SX,Sint Maarten
+Other,TC,Turks and Caicos Islands
+Other,TK,Tokelau
+Other,TO,Tonga
+Other,TV,Tuvalu
+Other,UK,UK
+Other,VC,Saint Vincent and the Grenadines
+Other,VG,British Virgin Islands
+Other,VI,U.S. Virgin Islands
+Other,VU,Vanuatu
+Other,WF,Wallis and Futuna
+Other,WS,Samoa
+Other,XK,Kosovo
+Other,YT,Mayotte
+Tier1,AU,Australia
+Tier1,CA,Canada
+Tier1,GB,United Kingdom
+Tier1,IE,Ireland
+Tier1,NZ,New Zealand
+Tier1,US,United States
