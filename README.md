@@ -190,10 +190,7 @@ Edit `dictionares/projects.json`:
 
 ```
 facebook-campaign-generator/
-├── create_campaign_universal.py  # Universal script for creating campaigns (recommended)
-├── create_campaign.py            # Creating campaigns for all tiers (legacy)
-├── create_single_campaign.py     # Creating a single campaign (legacy)
-├── create_pheromance_ww.py       # Creating WW campaign (legacy)
+├── create_campaign_universal.py  # Universal script for creating campaigns (CLI usage)
 ├── dictionares/                  # Dictionaries and configuration
 │   ├── projects.json             # Project settings
 │   ├── accounts.json             # Account names to IDs mapping
