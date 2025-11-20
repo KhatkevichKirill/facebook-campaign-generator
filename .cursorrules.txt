@@ -1,99 +1,93 @@
 # Cursor Rules for FacebookCampaignBuilder
 
-## Основные принципы
+## Core Principles
 
-Cursor должен использовать информацию в `instructions/` как канонические правила.
-Cursor обязан учитывать все справочники из `dictionares/`.
+Cursor must use information in `instructions/` as canonical rules.
+Cursor must consider all dictionaries from `dictionares/`.
 
-## Структура проекта
+## Project Structure
 
-- **Инструкции**: `/instructions/` — канонические правила работы системы
-- **Словари**: `/dictionares/` — все справочники и конфигурация
-- **Примеры**: `/examples/` — шаблоны и примеры
-- **Утилиты**: `/utils/` — вспомогательные функции
+- **Instructions**: `/instructions/` — canonical system operation rules
+- **Dictionaries**: `/dictionares/` — all reference books and configuration
+- **Examples**: `/examples/` — templates and examples
+- **Utilities**: `/utils/` — helper functions
 
-## Workflow создания кампании
+## Campaign Creation Workflow
 
-### По умолчанию используется Facebook Marketing API
+### Facebook Marketing API is used by default (no CSV fallback)
 
-1. **Генерация нейминга** по правилам из `instructions/naming.md`
-2. **Показ нейминга пользователю** с запросом подтверждения
-3. **Выбор аккаунта** (если у проекта несколько `account_names`):
-   - Показать список названий из `project.account_names`
-   - Маппить выбранное название на `account_id` через `accounts.json`
-4. **Создание через API**:
-   - Campaign → получить `campaign_id`
-   - Ad Set → получить `adset_id`
-   - Автоматическое логирование в `logs.csv`
-5. **Fallback при ошибках API**:
-   - Создать CSV файл `launches/[campaign_name].csv` для ручной загрузки
-   - Запись в `logs.csv` НЕ добавляется
+1. **Naming generation** according to rules from `instructions/naming.md`
+2. **Show naming to user** with confirmation request
+3. **Account selection** (if project has multiple `account_names`):
+   - Show list of names from `project.account_names`
+   - Map selected name to `account_id` via `accounts.json`
+4. **Creation via API**:
+   - Campaign → get `campaign_id`
+   - Ad Set → get `adset_id`
+   - Automatic logging to `logs.csv`
+5. **On API errors**:
+   - Show error message to user
+   - Do not create any CSV files, do not add entry to `logs.csv` if campaign/adset were not created
 
-## Работа с тирами
+## Working with Tiers
 
-- **Словарь тиров**: `dictionares/tiers.json` (создается из `examples/tiers_by_countries.csv`)
-- **Определение тира**:
-  - Если указан тир напрямую → использовать указанный тир
-  - Если указаны страны → определить тир через `tiers.json`:
-    - Все страны из одного тира → использовать этот тир
-    - Более 5 стран из разных тиров → использовать `WW`
-    - 5 или менее стран из разных тиров → тир по большинству
-- **Таргетинг на весь тир**: все страны тира из `tiers.json` добавляются в `targeting.geo_locations.countries`
-- **Утилита**: использовать `utils/tier_utils.py` для определения тиров
+- **Tiers dictionary**: `dictionares/tiers.json` (created from `examples/tiers_by_countries.csv`)
+- **Tier determination**:
+  - If tier is specified directly → use specified tier
+  - If countries are specified → determine tier via `tiers.json`:
+    - All countries from one tier → use that tier
+    - More than 5 countries from different tiers → use `WW`
+    - 5 or fewer countries from different tiers → tier by majority
+- **Targeting entire tier**: all tier countries from `tiers.json` are added to `targeting.geo_locations.countries` or `targeting.geo_locations.country_groups` (depending on tier)
+- **Utility**: use `utils/tier_utils.py` for tier determination
 
-## Работа с аккаунтами
+## Working with Accounts
 
-- **Словарь аккаунтов**: `dictionares/accounts.json` — маппинг названий на ID
-- **В проектах**: `projects.json` содержит `account_names` (названия, не ID)
-- **При создании кампании**:
-  - Если один аккаунт → использовать автоматически
-  - Если несколько → показать список названий для выбора
-  - Маппить название на ID через `accounts.json`
+- **Accounts dictionary**: `dictionares/accounts.json` — mapping of names to IDs
+- **In projects**: `projects.json` contains `account_names` (names, not IDs)
+- **When creating campaign**:
+  - If one account → use automatically
+  - If multiple → show list of names for selection
+  - Map name to ID via `accounts.json`
 
-## Изменение параметров
+## Parameter Modification
 
-При изменении любого параметра пользовательской командой ("измени гео", "поменяй бюджет") Cursor должен:
+When modifying any parameter via user command ("change geo", "change budget"), Cursor must:
 
-1. Найти параметр в соответствующей инструкции
-2. Обновить его в:
-   - нейминге (перегенерировать по правилам)
+1. Find parameter in corresponding instruction
+2. Update it in:
+   - naming (regenerate according to rules)
    - campaign settings
    - adset settings
-   - targeting (если гео/возраст/гендер/язык)
-   - CSV структуре (если создается fallback файл)
+   - targeting (if geo/age/gender/language)
 
-## Логирование
+## Logging
 
-- **Автоматическое**: после успешного создания Campaign и Ad Set через API
-- **Файл**: `logs.csv` с полями: `campaign_name`, `campaign_id`, `adset_id`, `created_at`
-- **Утилита**: использовать `utils/logging.py` для добавления записей
+- **Automatic**: after successful creation of Campaign and Ad Set via API
+- **File**: `logs.csv` with fields: `campaign_name`, `campaign_id`, `adset_id`, `created_at`
+- **Utility**: use `utils/logging.py` to add entries
 
-## Важные правила
+## Important Rules
 
-1. **Нейминг всегда показывается пользователю** перед созданием
-2. **Файлы создаются ТОЛЬКО после подтверждения** пользователем
-3. **По умолчанию используется API**, CSV создается только при ошибках
-4. **Тиры определяются автоматически** через `tiers.json` если не указаны явно
-5. **Аккаунты выбираются по названиям**, ID получается из `accounts.json`
-6. **Все словари обязательны** — проверять наличие перед использованием
+1. **Naming is always shown to user** before creation
+2. **Actual campaign creation via API happens ONLY after user confirmation**
+3. **Only API is used by default**, no CSV files are created
+4. **Tiers are determined automatically** via `tiers.json` if not specified explicitly
+5. **Accounts are selected by names**, ID is obtained from `accounts.json`
+6. **All dictionaries are mandatory** — check availability before use
 
-## Справочники
+## Reference Books
 
-- `projects.json` — настройки проектов (account_names, application_id, etc.)
-- `accounts.json` — маппинг названий аккаунтов на ID
-- `tiers.json` — маппинг тиров на списки стран
-- `objectives.json` — маппинг целей кампаний для API
-- `optimization_goals.json` — маппинг моделей оптимизации
-- `bid_strategies.json` — маппинг стратегий ставок
-- `event_types.json` — маппинг событий на типы для API
-- `events.json` — доступные события
-- `languages.json` — языки для нейминга
-- `locales.json` — маппинг языков на Facebook locale IDs
-- `countries.json` — коды стран
-- `api_config.json` — конфигурация API (access_token, api_version)
-
-## Эталоны
-
-- CSV структура: `/examples/sample_csv_structure.csv`
-- Полный экспорт: `/examples/sample_campaign_output.csv.csv`
-- Примеры запросов: `/examples/sample_campaign_request.txt`
+- `projects.json` — project settings (account_names, application_id, etc.)
+- `accounts.json` — mapping of account names to IDs
+- `tiers.json` — mapping of tiers to country lists
+- `objectives.json` — campaign objectives mapping for API
+- `optimization_goals.json` — optimization models mapping
+- `bid_strategies.json` — bid strategies mapping
+- `event_types.json` — events to types mapping for API
+- `events.json` — available events
+- `languages.json` — languages for naming
+- `locales.json` — mapping of languages to Facebook locale IDs
+- `countries.json` — country codes
+- `country_groups.json` — country groups for API
+- `api_config.json` — API configuration (access_token, api_version)
