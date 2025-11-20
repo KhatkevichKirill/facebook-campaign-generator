@@ -7,7 +7,6 @@ import sys
 from datetime import datetime
 from utils.tier_utils import load_tiers, get_all_countries_for_tier, format_tier_for_naming
 from utils.logging import log_campaign_creation
-from utils.csv_generator import create_csv_fallback
 from utils.naming import generate_campaign_name
 from utils.campaign_builder import create_campaign_via_api, create_adset_via_api
 from utils.config_loader import load_json
@@ -37,7 +36,6 @@ def main():
     
     # Получаем данные проекта
     project = projects[project_name]
-    project_alias = project['alias']
     
     # Получаем событие
     event_code = events[event_name]  # session_started_4
@@ -99,7 +97,6 @@ def main():
         # Параметры для нейминга
         naming_params = {
             'os': os_name,
-            'project_alias': project_alias,
             'tier': tier,
             'naming_countries': [],  # Для всего тира не перечисляем страны
             'gender': gender,
@@ -194,17 +191,7 @@ def main():
             print(f"  ✓ Запись добавлена в logs.csv")
             
         except Exception as e:
-            print(f"  ✗ Ошибка: {e}")
-            print(f"  Создание CSV файла для ручной загрузки...")
-            try:
-                csv_path = create_csv_fallback(
-                    campaign_name=camp_data['name'],
-                    params=api_params,
-                    project=project
-                )
-                print(f"  ✓ CSV файл создан: {csv_path}")
-            except Exception as csv_error:
-                print(f"  ✗ Ошибка при создании CSV: {csv_error}")
+            print(f"  ✗ Ошибка при создании кампании или адсета: {e}")
     
     print("\n" + "=" * 80)
     print("ГОТОВО!")

@@ -8,12 +8,11 @@ def generate_campaign_name(params: Dict) -> str:
     """
     Генерирует нейминг кампании по правилам
     
-    Формат: [OS]_[PROJECT]_[TIER]([COUNTRIES])_[GENDER]_[AGE]_[OPT MODEL][[EVENT?]]_[DATE]_[AUTOR]_[CBO/noCBO]_[BID STRATEGY]_[LANG]_[EXTRA?]
+    Формат: [OS]_[TIER]([COUNTRIES])_[GENDER]_[AGE]_[OPT MODEL][[EVENT?]]_[DATE]_[AUTOR]_[CBO/noCBO]_[BID STRATEGY]_[LANG]_[EXTRA?]
     
     Args:
         params: словарь с параметрами:
             - os: OS (AND или IOS)
-            - project_alias: алиас проекта (DC, LK, PM)
             - tier: тир (Tier-1, Latam, etc.)
             - naming_countries: список стран для нейминга (опционально)
             - gender: гендер (M, F, MF)
@@ -32,9 +31,6 @@ def generate_campaign_name(params: Dict) -> str:
     """
     # OS
     os_name = params['os']  # AND или IOS
-    
-    # PROJECT
-    project_alias = params['project_alias']  # DC
     
     # TIER
     tier = params['tier']  # Tier-1, Latam, etc.
@@ -74,12 +70,11 @@ def generate_campaign_name(params: Dict) -> str:
     lang = params['lang']  # ENG, ALL, etc.
     
     # EXTRA (account name)
-    extra = params.get('extra', '')  # DC1, LK1, etc.
+    extra = params.get('extra', '')  # account_1, account_2, etc.
     
-    # Формируем нейминг
+    # Формируем нейминг (без PROJECT)
     name_parts = [
         os_name,
-        project_alias,
         tier + countries_str,
         gender,
         age,

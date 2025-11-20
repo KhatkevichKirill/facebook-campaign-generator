@@ -1,253 +1,970 @@
 {
   "Africa": [
-    "AO",
-    "BF",
-    "BI",
-    "BJ",
-    "BW",
-    "CD",
-    "CF",
-    "CG",
-    "CI",
-    "CM",
-    "CV",
-    "ER",
-    "ET",
-    "GA",
-    "GH",
-    "GM",
-    "GN",
-    "GQ",
-    "GW",
-    "KE",
-    "LR",
-    "LS",
-    "MG",
-    "ML",
-    "MU",
-    "MW",
-    "MZ",
-    "NA",
-    "NE",
-    "NG",
-    "RE",
-    "RW",
-    "SL",
-    "SN",
-    "SO",
-    "SS",
-    "SZ",
-    "TD",
-    "TG",
-    "TZ",
-    "UG",
-    "ZA",
-    "ZM",
-    "ZW"
+    {
+      "Country": "AO",
+      "Human readable Country": "Angola"
+    },
+    {
+      "Country": "BF",
+      "Human readable Country": "Burkina Faso"
+    },
+    {
+      "Country": "BI",
+      "Human readable Country": "Burundi"
+    },
+    {
+      "Country": "BJ",
+      "Human readable Country": "Benin"
+    },
+    {
+      "Country": "BW",
+      "Human readable Country": "Botswana"
+    },
+    {
+      "Country": "CD",
+      "Human readable Country": "Democratic Republic of the Congo"
+    },
+    {
+      "Country": "CF",
+      "Human readable Country": "Central African Republic"
+    },
+    {
+      "Country": "CG",
+      "Human readable Country": "Republic of the Congo"
+    },
+    {
+      "Country": "CI",
+      "Human readable Country": "Ivory Coast"
+    },
+    {
+      "Country": "CM",
+      "Human readable Country": "Cameroon"
+    },
+    {
+      "Country": "CV",
+      "Human readable Country": "Cape Verde"
+    },
+    {
+      "Country": "DJ",
+      "Human readable Country": "Djibouti"
+    },
+    {
+      "Country": "ER",
+      "Human readable Country": "Eritrea"
+    },
+    {
+      "Country": "ET",
+      "Human readable Country": "Ethiopia"
+    },
+    {
+      "Country": "GA",
+      "Human readable Country": "Gabon"
+    },
+    {
+      "Country": "GH",
+      "Human readable Country": "Ghana"
+    },
+    {
+      "Country": "GM",
+      "Human readable Country": "Gambia"
+    },
+    {
+      "Country": "GN",
+      "Human readable Country": "Guinea"
+    },
+    {
+      "Country": "GQ",
+      "Human readable Country": "Equatorial Guinea"
+    },
+    {
+      "Country": "GW",
+      "Human readable Country": "Guinea-Bissau"
+    },
+    {
+      "Country": "KE",
+      "Human readable Country": "Kenya"
+    },
+    {
+      "Country": "LR",
+      "Human readable Country": "Liberia"
+    },
+    {
+      "Country": "LS",
+      "Human readable Country": "Lesotho"
+    },
+    {
+      "Country": "MG",
+      "Human readable Country": "Madagascar"
+    },
+    {
+      "Country": "ML",
+      "Human readable Country": "Mali"
+    },
+    {
+      "Country": "MU",
+      "Human readable Country": "Mauritius"
+    },
+    {
+      "Country": "MW",
+      "Human readable Country": "Malawi"
+    },
+    {
+      "Country": "MZ",
+      "Human readable Country": "Mozambique"
+    },
+    {
+      "Country": "NA",
+      "Human readable Country": "Namibia"
+    },
+    {
+      "Country": "NE",
+      "Human readable Country": "Niger"
+    },
+    {
+      "Country": "NG",
+      "Human readable Country": "Nigeria"
+    },
+    {
+      "Country": "RE",
+      "Human readable Country": "Reunion"
+    },
+    {
+      "Country": "RW",
+      "Human readable Country": "Rwanda"
+    },
+    {
+      "Country": "SC",
+      "Human readable Country": "Seychelles"
+    },
+    {
+      "Country": "SH",
+      "Human readable Country": "Saint Helena"
+    },
+    {
+      "Country": "SL",
+      "Human readable Country": "Sierra Leone"
+    },
+    {
+      "Country": "SN",
+      "Human readable Country": "Senegal"
+    },
+    {
+      "Country": "SO",
+      "Human readable Country": "Somalia"
+    },
+    {
+      "Country": "SS",
+      "Human readable Country": "South Sudan"
+    },
+    {
+      "Country": "ST",
+      "Human readable Country": "Sao Tome and Principe"
+    },
+    {
+      "Country": "SZ",
+      "Human readable Country": "Swaziland"
+    },
+    {
+      "Country": "TD",
+      "Human readable Country": "Chad"
+    },
+    {
+      "Country": "TG",
+      "Human readable Country": "Togo"
+    },
+    {
+      "Country": "TZ",
+      "Human readable Country": "Tanzania"
+    },
+    {
+      "Country": "UG",
+      "Human readable Country": "Uganda"
+    },
+    {
+      "Country": "YT",
+      "Human readable Country": "Mayotte"
+    },
+    {
+      "Country": "ZA",
+      "Human readable Country": "South Africa"
+    },
+    {
+      "Country": "ZM",
+      "Human readable Country": "Zambia"
+    },
+    {
+      "Country": "ZW",
+      "Human readable Country": "Zimbabwe"
+    }
   ],
   "Arabian": [
-    "AE",
-    "BH",
-    "DZ",
-    "EG",
-    "IQ",
-    "JO",
-    "KM",
-    "KW",
-    "LB",
-    "LY",
-    "MA",
-    "MR",
-    "OM",
-    "PS",
-    "QA",
-    "SA",
-    "SY",
-    "TN",
-    "YE"
+    {
+      "Country": "AE",
+      "Human readable Country": "United Arab Emirates"
+    },
+    {
+      "Country": "BH",
+      "Human readable Country": "Bahrain"
+    },
+    {
+      "Country": "DZ",
+      "Human readable Country": "Algeria"
+    },
+    {
+      "Country": "EG",
+      "Human readable Country": "Egypt"
+    },
+    {
+      "Country": "IQ",
+      "Human readable Country": "Iraq"
+    },
+    {
+      "Country": "JO",
+      "Human readable Country": "Jordan"
+    },
+    {
+      "Country": "KM",
+      "Human readable Country": "Comoros"
+    },
+    {
+      "Country": "KW",
+      "Human readable Country": "Kuwait"
+    },
+    {
+      "Country": "LB",
+      "Human readable Country": "Lebanon"
+    },
+    {
+      "Country": "LY",
+      "Human readable Country": "Libya"
+    },
+    {
+      "Country": "MA",
+      "Human readable Country": "Morocco"
+    },
+    {
+      "Country": "MR",
+      "Human readable Country": "Mauritania"
+    },
+    {
+      "Country": "OM",
+      "Human readable Country": "Oman"
+    },
+    {
+      "Country": "PS",
+      "Human readable Country": "Palestinian Territory"
+    },
+    {
+      "Country": "QA",
+      "Human readable Country": "Qatar"
+    },
+    {
+      "Country": "SA",
+      "Human readable Country": "Saudi Arabia"
+    },
+    {
+      "Country": "SD",
+      "Human readable Country": "Sudan"
+    },
+    {
+      "Country": "SY",
+      "Human readable Country": "Syria"
+    },
+    {
+      "Country": "TN",
+      "Human readable Country": "Tunisia"
+    },
+    {
+      "Country": "YE",
+      "Human readable Country": "Yemen"
+    }
   ],
   "Asia": [
-    "AF",
-    "BD",
-    "BN",
-    "BT",
-    "CN",
-    "FJ",
-    "FM",
-    "GE",
-    "HK",
-    "ID",
-    "IL",
-    "IN",
-    "JP",
-    "KH",
-    "KR",
-    "LA",
-    "LK",
-    "MN",
-    "MO",
-    "MV",
-    "MY",
-    "NP",
-    "PG",
-    "PH",
-    "PK",
-    "SB",
-    "SG",
-    "TH",
-    "TL",
-    "TR",
-    "TW",
-    "VN"
+    {
+      "Country": "AF",
+      "Human readable Country": "Afghanistan"
+    },
+    {
+      "Country": "AS",
+      "Human readable Country": "American Samoa"
+    },
+    {
+      "Country": "BD",
+      "Human readable Country": "Bangladesh"
+    },
+    {
+      "Country": "BN",
+      "Human readable Country": "Brunei"
+    },
+    {
+      "Country": "BT",
+      "Human readable Country": "Bhutan"
+    },
+    {
+      "Country": "CK",
+      "Human readable Country": "Cook Islands"
+    },
+    {
+      "Country": "CN",
+      "Human readable Country": "China"
+    },
+    {
+      "Country": "FJ",
+      "Human readable Country": "Fiji"
+    },
+    {
+      "Country": "FM",
+      "Human readable Country": "Micronesia"
+    },
+    {
+      "Country": "GE",
+      "Human readable Country": "Georgia"
+    },
+    {
+      "Country": "GU",
+      "Human readable Country": "Guam"
+    },
+    {
+      "Country": "HK",
+      "Human readable Country": "Hong Kong"
+    },
+    {
+      "Country": "ID",
+      "Human readable Country": "Indonesia"
+    },
+    {
+      "Country": "IL",
+      "Human readable Country": "Israel"
+    },
+    {
+      "Country": "IN",
+      "Human readable Country": "India"
+    },
+    {
+      "Country": "IO",
+      "Human readable Country": "British Indian Ocean Territory"
+    },
+    {
+      "Country": "JP",
+      "Human readable Country": "Japan"
+    },
+    {
+      "Country": "KH",
+      "Human readable Country": "Cambodia"
+    },
+    {
+      "Country": "KI",
+      "Human readable Country": "Kiribati"
+    },
+    {
+      "Country": "KR",
+      "Human readable Country": "South Korea"
+    },
+    {
+      "Country": "LA",
+      "Human readable Country": "Laos"
+    },
+    {
+      "Country": "LK",
+      "Human readable Country": "Sri Lanka"
+    },
+    {
+      "Country": "MH",
+      "Human readable Country": "Marshall Islands"
+    },
+    {
+      "Country": "MM",
+      "Human readable Country": "Myanmar"
+    },
+    {
+      "Country": "MN",
+      "Human readable Country": "Mongolia"
+    },
+    {
+      "Country": "MO",
+      "Human readable Country": "Macao"
+    },
+    {
+      "Country": "MP",
+      "Human readable Country": "Northern Mariana Islands"
+    },
+    {
+      "Country": "MV",
+      "Human readable Country": "Maldives"
+    },
+    {
+      "Country": "MY",
+      "Human readable Country": "Malaysia"
+    },
+    {
+      "Country": "NC",
+      "Human readable Country": "New Caledonia"
+    },
+    {
+      "Country": "NF",
+      "Human readable Country": "Norfolk Island"
+    },
+    {
+      "Country": "NP",
+      "Human readable Country": "Nepal"
+    },
+    {
+      "Country": "NR",
+      "Human readable Country": "Nauru"
+    },
+    {
+      "Country": "NU",
+      "Human readable Country": "Niue"
+    },
+    {
+      "Country": "PF",
+      "Human readable Country": "French Polynesia"
+    },
+    {
+      "Country": "PG",
+      "Human readable Country": "Papua New Guinea"
+    },
+    {
+      "Country": "PH",
+      "Human readable Country": "Philippines"
+    },
+    {
+      "Country": "PK",
+      "Human readable Country": "Pakistan"
+    },
+    {
+      "Country": "PW",
+      "Human readable Country": "Palau"
+    },
+    {
+      "Country": "SB",
+      "Human readable Country": "Solomon Islands"
+    },
+    {
+      "Country": "SG",
+      "Human readable Country": "Singapore"
+    },
+    {
+      "Country": "TH",
+      "Human readable Country": "Thailand"
+    },
+    {
+      "Country": "TK",
+      "Human readable Country": "Tokelau"
+    },
+    {
+      "Country": "TL",
+      "Human readable Country": "East Timor"
+    },
+    {
+      "Country": "TO",
+      "Human readable Country": "Tonga"
+    },
+    {
+      "Country": "TR",
+      "Human readable Country": "Turkey"
+    },
+    {
+      "Country": "TV",
+      "Human readable Country": "Tuvalu"
+    },
+    {
+      "Country": "TW",
+      "Human readable Country": "Taiwan"
+    },
+    {
+      "Country": "VN",
+      "Human readable Country": "Vietnam"
+    },
+    {
+      "Country": "VU",
+      "Human readable Country": "Vanuatu"
+    },
+    {
+      "Country": "WF",
+      "Human readable Country": "Wallis and Futuna"
+    },
+    {
+      "Country": "WS",
+      "Human readable Country": "Samoa"
+    }
   ],
   "CIS": [
-    "AM",
-    "AZ",
-    "BY",
-    "KG",
-    "KZ",
-    "MD",
-    "TJ",
-    "TM",
-    "UA",
-    "UZ"
+    {
+      "Country": "AM",
+      "Human readable Country": "Armenia"
+    },
+    {
+      "Country": "AZ",
+      "Human readable Country": "Azerbaijan"
+    },
+    {
+      "Country": "BY",
+      "Human readable Country": "Belarus"
+    },
+    {
+      "Country": "KG",
+      "Human readable Country": "Kyrgyzstan"
+    },
+    {
+      "Country": "KZ",
+      "Human readable Country": "Kazakhstan"
+    },
+    {
+      "Country": "MD",
+      "Human readable Country": "Moldova"
+    },
+    {
+      "Country": "TJ",
+      "Human readable Country": "Tajikistan"
+    },
+    {
+      "Country": "TM",
+      "Human readable Country": "Turkmenistan"
+    },
+    {
+      "Country": "UA",
+      "Human readable Country": "Ukraine"
+    },
+    {
+      "Country": "UZ",
+      "Human readable Country": "Uzbekistan"
+    }
   ],
   "Europe": [
-    "AL",
-    "AT",
-    "BA",
-    "BE",
-    "BG",
-    "CH",
-    "CY",
-    "CZ",
-    "DE",
-    "DK",
-    "EE",
-    "ES",
-    "FI",
-    "FR",
-    "GR",
-    "HR",
-    "HU",
-    "IS",
-    "IT",
-    "LT",
-    "LU",
-    "LV",
-    "ME",
-    "MK",
-    "MT",
-    "NL",
-    "NO",
-    "PL",
-    "PT",
-    "RO",
-    "RS",
-    "SE",
-    "SI",
-    "SK"
+    {
+      "Country": "AD",
+      "Human readable Country": "Andorra"
+    },
+    {
+      "Country": "AL",
+      "Human readable Country": "Albania"
+    },
+    {
+      "Country": "AT",
+      "Human readable Country": "Austria"
+    },
+    {
+      "Country": "AX",
+      "Human readable Country": "Aland Islands"
+    },
+    {
+      "Country": "BA",
+      "Human readable Country": "Bosnia and Herzegovina"
+    },
+    {
+      "Country": "BE",
+      "Human readable Country": "Belgium"
+    },
+    {
+      "Country": "BG",
+      "Human readable Country": "Bulgaria"
+    },
+    {
+      "Country": "CH",
+      "Human readable Country": "Switzerland"
+    },
+    {
+      "Country": "CY",
+      "Human readable Country": "Cyprus"
+    },
+    {
+      "Country": "CZ",
+      "Human readable Country": "Czech Republic"
+    },
+    {
+      "Country": "DE",
+      "Human readable Country": "Germany"
+    },
+    {
+      "Country": "DK",
+      "Human readable Country": "Denmark"
+    },
+    {
+      "Country": "EE",
+      "Human readable Country": "Estonia"
+    },
+    {
+      "Country": "ES",
+      "Human readable Country": "Spain"
+    },
+    {
+      "Country": "FI",
+      "Human readable Country": "Finland"
+    },
+    {
+      "Country": "FO",
+      "Human readable Country": "Faroe Islands"
+    },
+    {
+      "Country": "FR",
+      "Human readable Country": "France"
+    },
+    {
+      "Country": "GG",
+      "Human readable Country": "Guernsey"
+    },
+    {
+      "Country": "GI",
+      "Human readable Country": "Gibraltar"
+    },
+    {
+      "Country": "GR",
+      "Human readable Country": "Greece"
+    },
+    {
+      "Country": "HR",
+      "Human readable Country": "Croatia"
+    },
+    {
+      "Country": "HU",
+      "Human readable Country": "Hungary"
+    },
+    {
+      "Country": "IM",
+      "Human readable Country": "Isle of Man"
+    },
+    {
+      "Country": "IS",
+      "Human readable Country": "Iceland"
+    },
+    {
+      "Country": "IT",
+      "Human readable Country": "Italy"
+    },
+    {
+      "Country": "JE",
+      "Human readable Country": "Jersey"
+    },
+    {
+      "Country": "LI",
+      "Human readable Country": "Liechtenstein"
+    },
+    {
+      "Country": "LT",
+      "Human readable Country": "Lithuania"
+    },
+    {
+      "Country": "LU",
+      "Human readable Country": "Luxembourg"
+    },
+    {
+      "Country": "LV",
+      "Human readable Country": "Latvia"
+    },
+    {
+      "Country": "MC",
+      "Human readable Country": "Monaco"
+    },
+    {
+      "Country": "ME",
+      "Human readable Country": "Montenegro"
+    },
+    {
+      "Country": "MK",
+      "Human readable Country": "Macedonia"
+    },
+    {
+      "Country": "MT",
+      "Human readable Country": "Malta"
+    },
+    {
+      "Country": "NL",
+      "Human readable Country": "Netherlands"
+    },
+    {
+      "Country": "NO",
+      "Human readable Country": "Norway"
+    },
+    {
+      "Country": "PL",
+      "Human readable Country": "Poland"
+    },
+    {
+      "Country": "PT",
+      "Human readable Country": "Portugal"
+    },
+    {
+      "Country": "RO",
+      "Human readable Country": "Romania"
+    },
+    {
+      "Country": "RS",
+      "Human readable Country": "Serbia"
+    },
+    {
+      "Country": "SE",
+      "Human readable Country": "Sweden"
+    },
+    {
+      "Country": "SI",
+      "Human readable Country": "Slovenia"
+    },
+    {
+      "Country": "SJ",
+      "Human readable Country": "Svalbard and Jan Mayen"
+    },
+    {
+      "Country": "SK",
+      "Human readable Country": "Slovakia"
+    },
+    {
+      "Country": "SM",
+      "Human readable Country": "San Marino"
+    },
+    {
+      "Country": "XK",
+      "Human readable Country": "Kosovo"
+    }
   ],
   "LatAm": [
-    "AR",
-    "BO",
-    "BR",
-    "BS",
-    "BZ",
-    "CL",
-    "CO",
-    "CR",
-    "DO",
-    "EC",
-    "GP",
-    "GT",
-    "GY",
-    "HN",
-    "HT",
-    "JM",
-    "MQ",
-    "MX",
-    "NI",
-    "PA",
-    "PE",
-    "PR",
-    "PY",
-    "SR",
-    "SV",
-    "TT",
-    "UY",
-    "VE"
+    {
+      "Country": "AG",
+      "Human readable Country": "Antigua and Barbuda"
+    },
+    {
+      "Country": "AI",
+      "Human readable Country": "Anguilla"
+    },
+    {
+      "Country": "AR",
+      "Human readable Country": "Argentina"
+    },
+    {
+      "Country": "AW",
+      "Human readable Country": "Aruba"
+    },
+    {
+      "Country": "BB",
+      "Human readable Country": "Barbados"
+    },
+    {
+      "Country": "BL",
+      "Human readable Country": "Saint Barthelemy"
+    },
+    {
+      "Country": "BM",
+      "Human readable Country": "Bermuda"
+    },
+    {
+      "Country": "BO",
+      "Human readable Country": "Bolivia"
+    },
+    {
+      "Country": "BQ",
+      "Human readable Country": "Bonaire, Saint Eustatius and Saba "
+    },
+    {
+      "Country": "BR",
+      "Human readable Country": "Brazil"
+    },
+    {
+      "Country": "BS",
+      "Human readable Country": "Bahamas"
+    },
+    {
+      "Country": "BZ",
+      "Human readable Country": "Belize"
+    },
+    {
+      "Country": "CL",
+      "Human readable Country": "Chile"
+    },
+    {
+      "Country": "CO",
+      "Human readable Country": "Colombia"
+    },
+    {
+      "Country": "CR",
+      "Human readable Country": "Costa Rica"
+    },
+    {
+      "Country": "CU",
+      "Human readable Country": "Cuba"
+    },
+    {
+      "Country": "CW",
+      "Human readable Country": "Curacao"
+    },
+    {
+      "Country": "DM",
+      "Human readable Country": "Dominica"
+    },
+    {
+      "Country": "DO",
+      "Human readable Country": "Dominican Republic"
+    },
+    {
+      "Country": "EC",
+      "Human readable Country": "Ecuador"
+    },
+    {
+      "Country": "FK",
+      "Human readable Country": "Falkland Islands"
+    },
+    {
+      "Country": "GD",
+      "Human readable Country": "Grenada"
+    },
+    {
+      "Country": "GF",
+      "Human readable Country": "French Guiana"
+    },
+    {
+      "Country": "GP",
+      "Human readable Country": "Guadeloupe"
+    },
+    {
+      "Country": "GT",
+      "Human readable Country": "Guatemala"
+    },
+    {
+      "Country": "GY",
+      "Human readable Country": "Guyana"
+    },
+    {
+      "Country": "HN",
+      "Human readable Country": "Honduras"
+    },
+    {
+      "Country": "HT",
+      "Human readable Country": "Haiti"
+    },
+    {
+      "Country": "JM",
+      "Human readable Country": "Jamaica"
+    },
+    {
+      "Country": "KN",
+      "Human readable Country": "Saint Kitts and Nevis"
+    },
+    {
+      "Country": "KY",
+      "Human readable Country": "Cayman Islands"
+    },
+    {
+      "Country": "LC",
+      "Human readable Country": "Saint Lucia"
+    },
+    {
+      "Country": "MF",
+      "Human readable Country": "Saint Martin"
+    },
+    {
+      "Country": "MQ",
+      "Human readable Country": "Martinique"
+    },
+    {
+      "Country": "MS",
+      "Human readable Country": "Montserrat"
+    },
+    {
+      "Country": "MX",
+      "Human readable Country": "Mexico"
+    },
+    {
+      "Country": "NI",
+      "Human readable Country": "Nicaragua"
+    },
+    {
+      "Country": "PA",
+      "Human readable Country": "Panama"
+    },
+    {
+      "Country": "PE",
+      "Human readable Country": "Peru"
+    },
+    {
+      "Country": "PR",
+      "Human readable Country": "Puerto Rico"
+    },
+    {
+      "Country": "PY",
+      "Human readable Country": "Paraguay"
+    },
+    {
+      "Country": "SR",
+      "Human readable Country": "Suriname"
+    },
+    {
+      "Country": "SV",
+      "Human readable Country": "El Salvador"
+    },
+    {
+      "Country": "SX",
+      "Human readable Country": "Sint Maarten"
+    },
+    {
+      "Country": "TC",
+      "Human readable Country": "Turks and Caicos Islands"
+    },
+    {
+      "Country": "TT",
+      "Human readable Country": "Trinidad and Tobago"
+    },
+    {
+      "Country": "UY",
+      "Human readable Country": "Uruguay"
+    },
+    {
+      "Country": "VC",
+      "Human readable Country": "Saint Vincent and the Grenadines"
+    },
+    {
+      "Country": "VE",
+      "Human readable Country": "Venezuela"
+    },
+    {
+      "Country": "VG",
+      "Human readable Country": "British Virgin Islands"
+    },
+    {
+      "Country": "VI",
+      "Human readable Country": "U.S. Virgin Islands"
+    }
   ],
   "Other": [
-    "AD",
-    "AG",
-    "AI",
-    "AS",
-    "AW",
-    "AX",
-    "BB",
-    "BL",
-    "BM",
-    "BQ",
-    "CK",
-    "CW",
-    "DJ",
-    "DM",
-    "FK",
-    "FO",
-    "GD",
-    "GF",
-    "GG",
-    "GI",
-    "GL",
-    "GU",
-    "IC",
-    "IM",
-    "IO",
-    "JB",
-    "JE",
-    "KI",
-    "KN",
-    "KY",
-    "LC",
-    "LI",
-    "MC",
-    "MF",
-    "MH",
-    "MM",
-    "MP",
-    "MS",
-    "NC",
-    "NF",
-    "NR",
-    "NU",
-    "PF",
-    "PW",
-    "SC",
-    "SH",
-    "SJ",
-    "SM",
-    "ST",
-    "SX",
-    "TC",
-    "TK",
-    "TO",
-    "TV",
-    "VC",
-    "VG",
-    "VI",
-    "VU",
-    "WF",
-    "WS",
-    "XK",
-    "YT"
+    {
+      "Country": "GL",
+      "Human readable Country": "Greenland"
+    },
+    {
+      "Country": "IC",
+      "Human readable Country": "IC"
+    },
+    {
+      "Country": "JB",
+      "Human readable Country": "JB"
+    }
   ],
   "Tier1": [
-    "AU",
-    "CA",
-    "GB",
-    "IE",
-    "NZ",
-    "US"
+    {
+      "Country": "AU",
+      "Human readable Country": "Australia"
+    },
+    {
+      "Country": "CA",
+      "Human readable Country": "Canada"
+    },
+    {
+      "Country": "GB",
+      "Human readable Country": "United Kingdom"
+    },
+    {
+      "Country": "IE",
+      "Human readable Country": "Ireland"
+    },
+    {
+      "Country": "NZ",
+      "Human readable Country": "New Zealand"
+    },
+    {
+      "Country": "UK",
+      "Human readable Country": "UK"
+    },
+    {
+      "Country": "US",
+      "Human readable Country": "United States"
+    }
   ]
 }

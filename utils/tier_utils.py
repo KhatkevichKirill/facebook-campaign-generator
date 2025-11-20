@@ -113,6 +113,26 @@ def get_all_worldwide_countries(tiers_data=None):
     return sorted(list(set(all_countries)))
 
 
+def get_country_groups_for_tier(tier_raw):
+    """
+    Возвращает список country_group keys для указанного тира (если есть маппинг).
+
+    Args:
+        tier_raw: название тира из tiers.json (например, "Africa", "Asia", "Europe", "LatAm")
+
+    Returns:
+        Список ключей из country_groups.json или None, если для данного тира не используется country_group.
+    """
+    mapping = {
+        "Africa": ["africa"],
+        "Asia": ["asia"],
+        "Europe": ["europe"],
+        # Для LatAm используем комбинацию региональных групп
+        "LatAm": ["south_america", "central_america", "caribbean"],
+    }
+    return mapping.get(tier_raw)
+
+
 def determine_tier_and_countries(user_countries, user_tier=None):
     """
     Определяет тир и страны для таргетинга и нейминга

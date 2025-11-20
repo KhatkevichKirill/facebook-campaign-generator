@@ -1,36 +1,36 @@
 # Modification Rules
 
-Если пользователь меняет ГЕО:
-- обновить список стран
-- обновить targeting block
-- обновить naming block
-- обновить CSV country fields
+If the user changes GEO:
+- update country list
+- update targeting block
+- update naming block
+- update CSV country fields
 
-Если пользователь меняет ТИР:
-- взять соответствующие страны из tiers.json
-- обновить naming
-- обновить targeting
+If the user changes TIER:
+- take corresponding countries from tiers.json
+- update naming
+- update targeting
 
-Если пользователь меняет ЯЗЫК:
-- обновить naming
-- обновить targeting
+If the user changes LANGUAGE:
+- update naming
+- update targeting
 
-Если пользователь меняет ГЕНДЕР:
-- обновить naming
-- обновить targeting
+If the user changes GENDER:
+- update naming
+- update targeting
 
-Если пользователь меняет ВОЗРАСТ:
-- обновить naming
-- обновить targeting
+If the user changes AGE:
+- update naming
+- update targeting
 
-Если пользователь меняет БЮДЖЕТ:
-- обновить naming
-- обновить campaign/adset settings
+If the user changes BUDGET:
+- update naming
+- update campaign/adset settings
 
-Если пользователь меняет СТАВКУ:
-- обновить naming
-- обновить campaign/adset settings
+If the user changes BID:
+- update naming
+- update campaign/adset settings
 
-Если пользователь меняет ОПТИМИЗАЦИЮ:
-- обновить naming
-- если CPA → запросить event
+If the user changes OPTIMIZATION:
+- update naming
+- if CPA → request event

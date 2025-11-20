@@ -1,62 +1,23 @@
 {
-  "Likerro": {
-    "alias": "LK",
-    "account_names": ["LK1"],
-    "campaign_objective": "App promotion",
-    "link_object_id": "o:104320762498807",
-    "application_id": "x:627096341193498",
-    "object_store_url": "http://play.google.com/store/apps/details?id=com.panda.likerro",
+  "Mirai": {
+    "account_names": ["account_1", "account_2", "account_3"],
+    "campaign_objective": ["App promotion", "Sales"],
+    "link_object_id": "10587553655015800",
+    "instagram_object_id": "1784144844826522011",
+    "application_id": "12242266881440745",
+    "pixel_id": "1257023221728245",
+    "object_store_url": ["https://play.google.com/store/apps/details?id=com.guardiangridgames.hidden", "https://apps.apple.com/us/app/facebook/id284882215"],
     "beneficiary": {
-      "default": "FlintCast s.r.o.",
+      "default": "Facebook",
       "australia": "",
-      "taiwan": "2502033563246239",
+      "taiwan": "",
       "singapore": ""
     },
     "payer": {
-      "default": "FlintCast s.r.o.",
+      "default": "Facebook",
       "australia": "",
-      "taiwan": "2502033563246239",
+      "taiwan": "",
       "singapore": ""
-    }
-  },
-  "DuoChat": {
-    "alias": "DC",
-    "account_names": ["DC1", "DC2", "DC3"],
-    "campaign_objective": "App promotion",
-    "link_object_id": "o:630992410105586",
-    "application_id": "x:1685621218985671",
-    "object_store_url": "http://play.google.com/store/apps/details?id=com.duochat",
-    "beneficiary": {
-      "default": "FlintCast s.r.o.",
-      "australia": "",
-      "taiwan": "2502033563246239",
-      "singapore": "5817449121671633"
-    },
-    "payer": {
-      "default": "FlintCast s.r.o.",
-      "australia": "",
-      "taiwan": "2502033563246239",
-      "singapore": "5817449121671633"
-    }
-  },
-  "Pheromance": {
-    "alias": "PM",
-    "account_names": ["PM1"],
-    "campaign_objective": "App promotion",
-    "link_object_id": "o:199980006523211",
-    "application_id": "x:111412391989185",
-    "object_store_url": "http://play.google.com/store/apps/details?id=com.dating.pheromance",
-    "beneficiary": {
-      "default": "FlintCast s.r.o.",
-      "australia": "",
-      "taiwan": "2502033563246239",
-      "singapore": "5817449121671633"
-    },
-    "payer": {
-      "default": "FlintCast s.r.o.",
-      "australia": "",
-      "taiwan": "2502033563246239",
-      "singapore": "5817449121671633"
     }
   }
 }

@@ -6,6 +6,29 @@ from typing import Dict, List, Optional
 import requests
 
 
+def format_event_for_api(event_code: str) -> str:
+    """
+    Форматирует код события для Facebook API
+    
+    Args:
+        event_code: код события (например, "ad_displayed_40")
+    
+    Returns:
+        Отформатированное имя события для API (например, "40_ads_view")
+    """
+    # Маппинг событий на формат API (как в CSV)
+    event_mapping = {
+        "ad_displayed_20": "20_ads_view",
+        "ad_displayed_40": "40_ads_view",
+        "ad_displayed_80": "80_ads_view",
+        "session_started_3": "3_sessions",
+        "session_started_4": "4_sessions",
+        "session_started_5": "5_sessions"
+    }
+    
+    return event_mapping.get(event_code, event_code)
+
+
 def create_campaign_via_api(account_id: str, campaign_name: str, objective: str, api_config: Dict) -> str:
     """
     Создает кампанию через Facebook Marketing API
@@ -65,7 +88,10 @@ def create_adset_via_api(
             - custom_event_str: код события
             - object_store_url: URL приложения в магазине
             - application_id: ID приложения (без префикса "x:")
-            - targeting_countries: список стран
+            - targeting_countries: список стран (используется, если не задан country_group)
+            - country_group_keys: список ключей country_group (например, ["africa"], опционально)
+            - is_worldwide: флаг таргетинга на весь мир (bool, опционально)
+            - excluded_countries: список исключённых стран (опционально)
             - age_min: минимальный возраст
             - age_max: максимальный возраст
             - genders: список гендеров [1] или [2] или [1,2]
@@ -112,7 +138,8 @@ def create_adset_via_api(
     elif params.get('custom_event_type') and params.get('custom_event_str'):
         # Для CPA с событиями
         promoted_object["custom_event_type"] = params['custom_event_type']
-        promoted_object["custom_event_str"] = params['custom_event_str']
+        # Форматируем событие для API (ad_displayed_40 -> 40_ads_view)
+        promoted_object["custom_event_str"] = format_event_for_api(params['custom_event_str'])
     
     # Обязательные поля для promoted_object
     promoted_object["object_store_url"] = params['object_store_url']
@@ -121,10 +148,27 @@ def create_adset_via_api(
     data["promoted_object"] = json.dumps(promoted_object)
     
     # Targeting
+    geo_locations = {}
+
+    # 1) World Wide
+    if params.get('is_worldwide'):
+        geo_locations["country_groups"] = ["worldwide"]
+        geo_locations["is_worldwide"] = True
+    # 2) Таргетинг по country_group (тир)
+    elif params.get('country_group_keys'):
+        geo_locations["country_groups"] = params['country_group_keys']
+    # 3) Таргетинг по конкретным странам
+    elif params.get('targeting_countries'):
+        geo_locations["countries"] = params['targeting_countries']
+    else:
+        raise ValueError("Geo targeting is not defined: expected is_worldwide, country_group_keys or targeting_countries")
+
+    # Исключённые страны (если есть)
+    if params.get('excluded_countries'):
+        geo_locations["excluded_countries"] = params['excluded_countries']
+
     targeting = {
-        "geo_locations": {
-            "countries": params['targeting_countries']
-        },
+        "geo_locations": geo_locations,
         "age_min": params['age_min'],
         "age_max": params['age_max'],
         "genders": params['genders'],

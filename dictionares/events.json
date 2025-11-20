@@ -1,7 +1,13 @@
 {
-  "3 сессии": "session_started_3",
-  "4 сессии": "session_started_4",
-  "5 сессий": "session_started_5",
-  "20 реклам": "ad_displayed_20",
-  "40 реклам": "ad_displayed_40"
+  "Add payment info": "ADD_PAYMENT_INFO",
+  "Add to cart": "ADD_TO_CART",
+  "Add to wishlist": "ADD_TO_WISHLIST",
+  "Registration": "COMPLETE_REGISTRATION",
+  "Content view": "CONTENT_VIEW",
+  "Checkout": "INITIATED_CHECKOUT",
+  "Lead": "LEAD",
+  "Purchase": "PURCHASE",
+  "Trial started": "START_TRIAL",
+  "Subscription started": "SUBSCRIBE",
+  "custom_event_1": "CUSTOM_EVENT_1"
 }

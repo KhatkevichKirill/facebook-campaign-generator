@@ -1,13 +1,13 @@
 {
   "App promotion": "OUTCOME_APP_PROMOTION",
-  "Traffic": "LINK_CLICKS",
-  "Conversions": "CONVERSIONS",
-  "Engagement": "POST_ENGAGEMENT",
-  "Reach": "REACH",
-  "Video Views": "VIDEO_VIEWS",
-  "Lead Generation": "LEAD_GENERATION",
-  "Messages": "MESSAGES",
-  "Store Traffic": "STORE_TRAFFIC",
-  "Catalog Sales": "CATALOG_SALES"
+  "Traffic": "OUTCOME_TRAFFIC",
+  "Conversions": ["OUTCOME_ENGAGEMENT", "OUTCOME_SALES","OUTCOME_LEADS"],
+  "Engagement": "OUTCOME_ENGAGEMENT",
+  "Reach": "OUTCOME_AWARENESS",
+  "Video Views": ["OUTCOME_AWARENESS","OUTCOME_ENGAGEMENT"],
+  "Lead Generation": "OUTCOME_LEADS",
+  "Messages": "OUTCOME_ENGAGEMENT",
+  "Store Traffic": "OUTCOME_AWARENESS",
+  "Sales": "OUTCOME_SALES"
 }
 

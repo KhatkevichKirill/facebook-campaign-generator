@@ -11,10 +11,10 @@ from utils.tier_utils import (
     load_tiers, 
     get_all_countries_for_tier, 
     format_tier_for_naming,
-    get_all_worldwide_countries
+    get_all_worldwide_countries,
+    get_country_groups_for_tier
 )
 from utils.logging import log_campaign_creation
-from utils.csv_generator import create_csv_fallback
 from utils.naming import generate_campaign_name
 from utils.campaign_builder import create_campaign_via_api, create_adset_via_api
 from utils.config_loader import load_json
@@ -95,6 +95,8 @@ def create_single_campaign_data(
         restricted = get_restricted_countries()
         countries = [c for c in countries if c not in restricted]
         naming_countries = []  # Для WW не перечисляем страны в нейминге
+        is_worldwide = True
+        country_group_keys = ["worldwide"]
     else:
         tier_mapping = {
             "Tier-1": "Tier1",
@@ -109,6 +111,8 @@ def create_single_campaign_data(
         restricted = get_restricted_countries()
         countries = [c for c in countries if c not in restricted]
         naming_countries = []  # Для всего тира не перечисляем страны
+        is_worldwide = False
+        country_group_keys = get_country_groups_for_tier(tier_raw)
     
     # Выбираем аккаунт
     if params.get('account_name'):
@@ -120,7 +124,6 @@ def create_single_campaign_data(
     # Генерируем нейминг
     naming_params = {
         'os': params['os'],
-        'project_alias': project['alias'],
         'tier': tier,
         'naming_countries': naming_countries,
         'gender': params['gender'],
@@ -142,6 +145,8 @@ def create_single_campaign_data(
         'tier': tier,
         'tier_raw': tier_raw,
         'countries': countries,
+        'is_worldwide': is_worldwide,
+        'country_group_keys': country_group_keys,
         'account_id': account_id,
         'account_name': account_name
     }
@@ -179,7 +184,6 @@ def main():
         sys.exit(1)
     
     project = projects[args.project]
-    project_alias = project['alias']
     
     # Получаем событие (если указано)
     event_code = None
@@ -328,6 +332,10 @@ def main():
                 'object_store_url': project['object_store_url'],
                 'application_id': application_id,
                 'targeting_countries': camp_data['countries'],
+                 # Таргетинг по тиру через country_groups / is_worldwide, по странам — через countries
+                'country_group_keys': camp_data.get('country_group_keys'),
+                'is_worldwide': camp_data.get('is_worldwide', False),
+                'excluded_countries': get_restricted_countries(),
                 'age_min': age_min,
                 'age_max': age_max,
                 'genders': genders,
@@ -368,17 +376,7 @@ def main():
             print(f"  ✓ Запись добавлена в logs.csv")
             
         except Exception as e:
-            print(f"  ✗ Ошибка: {e}")
-            print(f"  Создание CSV файла для ручной загрузки...")
-            try:
-                csv_path = create_csv_fallback(
-                    campaign_name=camp_data['name'],
-                    params=api_params,
-                    project=project
-                )
-                print(f"  ✓ CSV файл создан: {csv_path}")
-            except Exception as csv_error:
-                print(f"  ✗ Ошибка при создании CSV: {csv_error}")
+            print(f"  ✗ Ошибка при создании кампании или адсета: {e}")
     
     print("\n" + "=" * 80)
     print("ГОТОВО!")

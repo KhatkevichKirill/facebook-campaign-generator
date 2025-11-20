@@ -1,55 +1,51 @@
 # Accounts Dictionary
 
-Словарь `accounts.json` содержит маппинг названий аккаунтов на их ID для Facebook Marketing API.
+The `accounts.json` dictionary contains a mapping of account names to their IDs for Facebook Marketing API.
 
-## Структура
+## Structure
 
 ```json
 {
-  "DC(ДЦ)1": "act_2040967873097861",
-  "DC(ДЦ)2": "act_1405705227234275",
-  "DC(ДЦ)3": "act_1402556184214015",
-  "LK1": "act_1691556794551876",
-  "PM1": "act_683299956696917"
+  "account_1": "1824596061915489",
+  "account_2": "81405705227234275",
+  "account_3": "13402556184214015"
 }
 ```
 
-## Использование
+## Usage
 
-1. В `projects.json` указываются названия аккаунтов в поле `account_names`:
+1. In `projects.json`, account names are specified in the `account_names` field:
    ```json
    {
      "DuoChat": {
-       "account_names": ["DC(ДЦ)1", "DC(ДЦ)2", "DC(ДЦ)3"],
+       "account_names": ["account_1", "account_2", "account_3"],
        ...
      }
    }
    ```
 
-2. При создании кампании:
-   - Если у проекта один аккаунт — используется автоматически
-   - Если у проекта несколько аккаунтов — пользователю показывается список названий для выбора
-   - Выбранное название маппится на `account_id` через `accounts.json`
-   - Полученный `account_id` используется в запросах к API
+2. When creating a campaign:
+   - If the project has one account — it is used automatically
+   - If the project has multiple accounts — by default, the first one in order from `accounts.json` is selected
+   - The selected name is mapped to `account_id` via `accounts.json`
+   - The resulting `account_id` is used in API requests
 
-## Пример
+## Example
 
-**Запрос пользователя:**
+**User request:**
 ```
-Создай кампанию для DuoChat
+Create a campaign for Mirai
 ```
 
-**Процесс:**
-1. Система находит проект "DuoChat" в `projects.json`
-2. Видит `account_names: ["DC(ДЦ)1", "DC(ДЦ)2", "DC(ДЦ)3"]`
-3. Показывает пользователю: "Выберите аккаунт: DC(ДЦ)1, DC(ДЦ)2, DC(ДЦ)3"
-4. Пользователь выбирает: "DC(ДЦ)1"
-5. Система ищет в `accounts.json`: `"DC(ДЦ)1": "act_2040967873097861"`
-6. Использует `account_id = "act_2040967873097861"` в запросах к API
+**Process:**
+1. The system finds the "Mirai" project in `projects.json`
+2. Sees `account_names: ["account_1", "account_2", "account_3"]`
+3. The system selects the specified account or the first one in the list if no account was specified, from `accounts.json`: `"account_1": "act_1828845960619189"`
+4. Uses `account_id = "act_1828845960619189"` in API requests
 
-## Добавление новых аккаунтов
+## Adding New Accounts
 
-Для добавления нового аккаунта:
-1. Добавьте запись в `accounts.json`: `"Название": "act_ID"`
-2. Добавьте название в `account_names` соответствующего проекта в `projects.json`
+To add a new account:
+1. Add an entry to `accounts.json`: `"Name": "act_ID"`
+2. Add the name to `account_names` of the corresponding project in `projects.json`
 

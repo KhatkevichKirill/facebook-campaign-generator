@@ -11,7 +11,7 @@ values:
 - tROAS
 
 ## Event (only if CPA)
-Берётся из `events.json`.
+Taken from `events.json`.
 
 ## Bid Strategy
 values:
@@ -21,27 +21,30 @@ values:
 - Ad impression
 
 ## Daily Budget
-Число.
+Number.
 
 ## Bid Value
-Число (float, "." separator).
+Number (float, "." separator).
+
+## Special ad categories
+"special_ad_categories": ["NONE"]
 
 ## Project-Specific Settings
-Берутся из словаря `projects.json` для каждого проекта:
+Taken from the `projects.json` dictionary for each project:
 
-- **Account Names**: `project.account_names` (массив названий аккаунтов, например ["DC(ДЦ)1", "DC(ДЦ)2"])
-  - Названия аккаунтов маппятся на ID через словарь `accounts.json`
-  - При создании кампании пользователь выбирает название аккаунта, система находит соответствующий ID
-- **Campaign Objective**: `project.campaign_objective` (например, "App promotion")
-- **Link Object ID**: `project.link_object_id` (формат: "o:...")
-- **Application ID**: `project.application_id` (формат: "x:...")
-- **Object Store URL**: `project.object_store_url` (URL приложения в магазине)
-- **Beneficiary**: `project.beneficiary.default` или региональный вариант (`project.beneficiary.australia`, `project.beneficiary.taiwan`, `project.beneficiary.singapore`)
-- **Payer**: `project.payer.default` или региональный вариант (`project.payer.australia`, `project.payer.taiwan`, `project.payer.singapore`)
+- **Account Names**: `project.account_names` (array of account names, e.g., ["account_1", "account_2"])
+  - Account names are mapped to IDs via the `accounts.json` dictionary
+  - When creating a campaign, the user selects an account name, and the system finds the corresponding ID
+- **Campaign Objective**: `project.campaign_objective` (e.g., "App promotion")
+- **Link Object ID**: `project.link_object_id` (format: "...")
+- **Application ID**: `project.application_id` (format: "...")
+- **Object Store URL**: `project.object_store_url` (app store URL)
+- **Beneficiary**: `project.beneficiary.default` or regional variant (`project.beneficiary.australia`, `project.beneficiary.taiwan`, `project.beneficiary.singapore`)
+- **Payer**: `project.payer.default` or regional variant (`project.payer.australia`, `project.payer.taiwan`, `project.payer.singapore`)
 
-Региональные варианты используются в зависимости от географии кампании. Если региональное значение пустое, используется `default`.
+Regional variants are used depending on campaign geography. If a regional value is empty, `default` is used.
 
-**Для API:** 
-- Если у проекта несколько `account_names`, пользователю показывается список названий для выбора
-- Выбранное название аккаунта маппится на `account_id` через словарь `accounts.json`
-- Полученный `account_id` используется в запросах к Facebook Marketing API
+**For API:** 
+- If the project has multiple `account_names`, a list of names is shown to the user for selection
+- The selected account name is mapped to `account_id` via the `accounts.json` dictionary
+- The resulting `account_id` is used in Facebook Marketing API requests

@@ -1,72 +1,77 @@
 # Facebook Campaign Builder for Cursor
 
-Этот проект позволяет автоматически создавать рекламные кампании и адсеты для Meta Ads через Facebook Marketing API или генерацию CSV файлов для ручной загрузки.
+This project allows you to automatically create advertising campaigns and ad sets for Meta Ads via Facebook Marketing API.
 
-## Что умеет система
+## System Capabilities
 
-- ✅ **Автоматическое создание кампаний через Facebook Marketing API**
-- ✅ Создание нейминга кампании по стандартам UA
-- ✅ Сбор параметров таргетинга (tier, страны, исключения, возраст, гендер, язык)
-- ✅ Выбор модели оптимизации и событий
-- ✅ Формирование настроек кампании (CBO/noCBO, бюджет, стратегия ставки)
-- ✅ Автоматическое логирование всех созданных кампаний
-- ✅ Генерация CSV файлов (fallback при ошибках API)
-- ✅ Поддержка команд на изменение параметров ("поменяй гео на Канаду", "измени ставку", "сделай гендер Women")
+- ✅ **Automatic campaign creation via Facebook Marketing API**
+- ✅ Campaign naming generation according to UA standards
+- ✅ Targeting parameters collection (tier, countries, exclusions, age, gender, language)
+- ✅ Optimization model and events selection
+- ✅ Campaign settings formation (CBO/noCBO, budget, bid strategy)
+- ✅ Automatic logging of all created campaigns
+- ✅ Support for parameter modification commands ("change geo to Canada", "change bid", "set gender to Women")
 
-## Основная логика
+## Core Logic
 
 ### Workflow
 
-1. **Генерация нейминга** — по правилам из `instructions/naming.md`
-2. **Подтверждение пользователя** — показывается нейминг, ожидается подтверждение
-3. **Создание через API** (по умолчанию):
-   - Создание Campaign через Facebook Marketing API
-   - Создание Ad Set через Facebook Marketing API
-   - Автоматическое логирование в `logs.csv`
-4. **Fallback при ошибках**:
-   - Создание CSV файла для ручной загрузки
-   - Запись в `logs.csv` не добавляется
+1. **Naming generation** — according to rules from `instructions/naming.md`
+2. **User confirmation** — naming is shown, confirmation is awaited
+3. **Creation via API** (by default):
+   - Campaign creation via Facebook Marketing API
+   - Ad Set creation via Facebook Marketing API
+   - Automatic logging to `logs.csv`
+4. **Error handling**:
+   - On API errors, an error message is shown
+   - CSV files are not created, entry in `logs.csv` is not added if campaign/adset were not created
 
-### Структура проекта
+### Project Structure
 
-Cursor использует:
-- **Инструкции** в папке `/instructions`:
-  - `naming.md` — правила нейминга кампаний
-  - `campaign_settings.md` — настройки кампании и адсета
-  - `targeting.md` — правила таргетинга
-  - `csv_structure.md` — структура CSV и workflow
-  - `api_integration.md` — интеграция с Facebook Marketing API
-  - `modification_rules.md` — правила изменения параметров
+Cursor uses:
+- **Instructions** in `/instructions` folder:
+  - `naming.md` — campaign naming rules
+  - `campaign_settings.md` — campaign and ad set settings
+  - `targeting.md` — targeting rules
+  - `csv_structure.md` — CSV structure and workflow (legacy)
+  - `api_integration.md` — Facebook Marketing API integration
+  - `modification_rules.md` — parameter modification rules
+  - `accounts.md` — account management rules
 
-- **Словари** в `/dictionares`:
-  - `projects.json` — проекты с настройками (account_ids, application_id, etc.)
-  - `objectives.json` — маппинг целей кампаний для API
-  - `optimization_goals.json` — маппинг моделей оптимизации
-  - `bid_strategies.json` — маппинг стратегий ставок
-  - `event_types.json` — маппинг событий на типы для API
-  - `events.json` — доступные события
-  - `languages.json` — языки для нейминга
-  - `locales.json` — маппинг языков на Facebook locale IDs
-  - `countries.json` — коды стран
-  - `os.json` — операционные системы
-  - `api_config.json` — конфигурация API (access_token, api_version)
+- **Dictionaries** in `/dictionares`:
+  - `projects.json` — projects with settings (account_names, application_id, etc.)
+  - `accounts.json` — mapping of account names to IDs
+  - `objectives.json` — campaign objectives mapping for API
+  - `optimization_goals.json` — optimization models mapping
+  - `bid_strategies.json` — bid strategies mapping
+  - `event_types.json` — events to types mapping for API
+  - `events.json` — available events
+  - `languages.json` — languages for naming
+  - `locales.json` — languages to Facebook locale IDs mapping
+  - `countries.json` — country codes
+  - `country_groups.json` — country groups for API
+  - `tiers.json` — tiers to country lists mapping
+  - `os.json` — operating systems
+  - `api_config.json` — API configuration (access_token, api_version)
 
-- **Примеры** в `/examples`:
-  - `sample_campaign_output.csv.csv` — шаблон полного экспорта Meta Ads
-  - `sample_csv_structure.csv` — упрощенная структура CSV
-  - `sample_campaign_request.txt` — пример запроса
+- **Examples** in `/examples`:
+  - `tiers_by_countries.csv` — tier definitions by countries
 
-- **Утилиты** в `/utils`:
-  - `logging.py` — функция автоматического логирования
+- **Utilities** in `/utils`:
+  - `logging.py` — automatic logging function
+  - `naming.py` — naming generation
+  - `campaign_builder.py` — API requests
+  - `config_loader.py` — configuration loading with caching
+  - `tier_utils.py` — tier utilities
 
-## Как пользоваться
+## Usage
 
-### Универсальный скрипт (рекомендуется)
+### Universal Script (Recommended)
 
-Используйте `create_campaign_universal.py` для создания кампаний через командную строку:
+Use `create_campaign_universal.py` to create campaigns via command line:
 
 ```bash
-# Создать одну кампанию для конкретного тира
+# Create a single campaign for a specific tier
 python create_campaign_universal.py \
   --project DuoChat \
   --tier Latam \
@@ -74,9 +79,9 @@ python create_campaign_universal.py \
   --age 18-65+ \
   --budget 50 \
   --bid 0.30 \
-  --event "4 сессии"
+  --event "4 sessions"
 
-# Создать кампании для всех тиров
+# Create campaigns for all tiers
 python create_campaign_universal.py \
   --project DuoChat \
   --all-tiers \
@@ -84,9 +89,9 @@ python create_campaign_universal.py \
   --age 18-65+ \
   --budget 50 \
   --bid 0.30 \
-  --event "4 сессии"
+  --event "4 sessions"
 
-# Создать WW кампанию для любого проекта
+# Create WW campaign for any project
 python create_campaign_universal.py \
   --project Likerro \
   --tier WW \
@@ -95,65 +100,65 @@ python create_campaign_universal.py \
   --budget 25 \
   --opt-model tROAS \
   --bid-strategy "Lower cost" \
-  --language "Английский"
+  --language "English"
 ```
 
-**Все параметры:**
-- `--project` - название проекта (обязательно)
-- `--os` - операционная система (AND/IOS, по умолчанию AND)
-- `--gender` - гендер (M/F/MF, обязательно)
-- `--age` - возраст (обязательно, например: 18-65+, 21-65)
-- `--budget` - дневной бюджет (обязательно)
-- `--tier` или `--all-tiers` - тир или все тиры (обязательно)
-- `--opt-model` - модель оптимизации (CPA/CPI/tROAS, по умолчанию CPA)
-- `--event` - событие для CPA (опционально)
-- `--bid-strategy` - стратегия ставки (по умолчанию "Bid cap")
-- `--bid` - значение ставки (обязательно для Bid cap и Cost per result goal)
-- `--language` - язык (опционально)
-- `--campaign-type` - тип кампании (CBO/noCBO, по умолчанию noCBO)
-- `--autor` - автор (по умолчанию KH)
-- `--account` - название аккаунта (опционально, используется первый по умолчанию)
+**All parameters:**
+- `--project` - project name (required)
+- `--os` - operating system (AND/IOS, default AND)
+- `--gender` - gender (M/F/MF, required)
+- `--age` - age (required, e.g.: 18-65+, 21-65)
+- `--budget` - daily budget (required)
+- `--tier` or `--all-tiers` - tier or all tiers (required)
+- `--opt-model` - optimization model (CPA/CPI/tROAS, default CPA)
+- `--event` - event for CPA (optional)
+- `--bid-strategy` - bid strategy (default "Bid cap")
+- `--bid` - bid value (required for Bid cap and Cost per result goal)
+- `--language` - language (optional)
+- `--campaign-type` - campaign type (CBO/noCBO, default noCBO)
+- `--autor` - author (default KH)
+- `--account` - account name (optional, first one is used by default)
 
-### Использование через Cursor (для интерактивного режима)
+### Using via Cursor (Interactive Mode)
 
-### Базовый запрос
+### Basic Request
 
 ```
-Создай кампанию для проекта Likerro, Android, страны US и Австралия, 
-гендер: женщины, возраст: 24-65+, на CPA, событие: четыре сессии, 
-английский язык, ставка Bid Cap 5.5 и бюджет 200. Не CBO
+Create a campaign for project Likerro, Android, countries US and Australia, 
+gender: women, age: 24-65+, CPA, event: four sessions, 
+English language, Bid Cap 5.5 and budget 200. No CBO
 ```
 
-### Что происходит
+### What Happens
 
-1. Cursor генерирует нейминг по правилам
-2. Показывает нейминг для подтверждения
-3. После подтверждения:
-   - Создает Campaign через API
-   - Создает Ad Set через API
-   - Добавляет запись в `logs.csv`
+1. Cursor generates naming according to rules
+2. Shows naming for confirmation
+3. After confirmation:
+   - Creates Campaign via API
+   - Creates Ad Set via API
+   - Adds entry to `logs.csv`
 
-### Примеры запросов
+### Request Examples
 
-**Создание кампании:**
+**Creating a campaign:**
 ```
-Создай кампанию: Likerro, Android, Tier-1, US, Men, 21-65+, 
-CPA, 40 реклам, English, Bid cap, 5.2, бюджет 250, noCBO
-```
-
-**Изменение параметров:**
-```
-Поменяй гео на Канаду
-Измени ставку на 6.0
-Сделай гендер Women
-Измени возраст на 25-65+
+Create a campaign: Likerro, Android, Tier-1, US, Men, 21-65+, 
+CPA, 40 ads, English, Bid cap, 5.2, budget 250, noCBO
 ```
 
-## Настройка
+**Modifying parameters:**
+```
+Change geo to Canada
+Change bid to 6.0
+Set gender to Women
+Change age to 25-65+
+```
 
-### 1. Конфигурация API
+## Setup
 
-Создайте файл `dictionares/api_config.json` на основе `dictionares/api_config.json.example`:
+### 1. API Configuration
+
+Create file `dictionares/api_config.json` based on `dictionares/api_config.json.example`:
 ```json
 {
   "access_token": "YOUR_ACCESS_TOKEN",
@@ -162,16 +167,15 @@ CPA, 40 реклам, English, Bid cap, 5.2, бюджет 250, noCBO
 }
 ```
 
-**Важно:** `api_config.json` не включен в репозиторий по соображениям безопасности. Скопируйте `api_config.json.example` и заполните своими данными.
+**Important:** `api_config.json` is not included in the repository for security reasons. Copy `api_config.json.example` and fill in your data.
 
-### 2. Настройка проектов
+### 2. Projects Configuration
 
-Отредактируйте `dictionares/projects.json`:
+Edit `dictionares/projects.json`:
 ```json
 {
   "Likerro": {
-    "alias": "LK",
-    "account_ids": ["act_123456789"],
+    "account_names": ["account_1", "account_2"],
     "campaign_objective": "App promotion",
     "application_id": "x:627096341193498",
     "object_store_url": "http://play.google.com/store/apps/details?id=...",
@@ -180,67 +184,75 @@ CPA, 40 реклам, English, Bid cap, 5.2, бюджет 250, noCBO
 }
 ```
 
-## Структура файлов
+**Note:** Projects use `account_names` (account name references), not `account_ids`. Account names are mapped to IDs via `dictionares/accounts.json`.
+
+## File Structure
 
 ```
-FacebookCampaignGenerator/
-├── create_campaign_universal.py  # Универсальный скрипт для создания кампаний (рекомендуется)
-├── create_campaign.py            # Создание кампаний для всех тиров (legacy)
-├── create_single_campaign.py      # Создание одной кампании (legacy)
-├── create_pheromance_ww.py        # Создание WW кампании (legacy)
-├── dictionares/          # Словари и конфигурация
-│   ├── projects.json     # Настройки проектов
-│   ├── api_config.json   # Конфигурация API
-│   ├── objectives.json   # Маппинг целей
-│   ├── optimization_goals.json
-│   ├── bid_strategies.json
-│   ├── event_types.json
-│   ├── events.json
-│   ├── languages.json
-│   ├── locales.json
-│   └── ...
-├── instructions/         # Инструкции для Cursor
-│   ├── naming.md
-│   ├── campaign_settings.md
-│   ├── targeting.md
-│   ├── csv_structure.md
-│   ├── api_integration.md
-│   └── modification_rules.md
-├── examples/            # Примеры и шаблоны
-├── launches/            # CSV файлы (fallback при ошибках)
-├── utils/               # Утилиты
-│   ├── naming.py        # Генерация нейминга
-│   ├── campaign_builder.py  # API запросы
-│   ├── config_loader.py     # Загрузка конфигураций с кэшированием
-│   ├── csv_generator.py     # Генерация CSV fallback
-│   ├── tier_utils.py        # Работа с тирами
-│   └── logging.py          # Автоматическое логирование
-└── logs.csv            # Лог всех созданных кампаний
+facebook-campaign-generator/
+├── create_campaign_universal.py  # Universal script for creating campaigns (recommended)
+├── create_campaign.py            # Creating campaigns for all tiers (legacy)
+├── create_single_campaign.py     # Creating a single campaign (legacy)
+├── create_pheromance_ww.py       # Creating WW campaign (legacy)
+├── dictionares/                  # Dictionaries and configuration
+│   ├── projects.json             # Project settings
+│   ├── accounts.json             # Account names to IDs mapping
+│   ├── api_config.json           # API configuration
+│   ├── objectives.json           # Objectives mapping
+│   ├── optimization_goals.json   # Optimization goals mapping
+│   ├── bid_strategies.json       # Bid strategies mapping
+│   ├── event_types.json          # Event types mapping
+│   ├── events.json               # Available events
+│   ├── languages.json            # Languages for naming
+│   ├── locales.json              # Languages to locale IDs mapping
+│   ├── countries.json            # Country codes
+│   ├── country_groups.json      # Country groups for API
+│   ├── tiers.json                # Tiers to countries mapping
+│   └── os.json                   # Operating systems
+├── instructions/                 # Instructions for Cursor
+│   ├── naming.md                 # Campaign naming rules
+│   ├── campaign_settings.md      # Campaign and ad set settings
+│   ├── targeting.md              # Targeting rules
+│   ├── csv_structure.md          # CSV structure (legacy)
+│   ├── api_integration.md        # API integration
+│   ├── modification_rules.md     # Parameter modification rules
+│   └── accounts.md                # Account management rules
+├── examples/                     # Examples and templates
+│   └── tiers_by_countries.csv    # Tier definitions by countries
+├── launches/                     # Historical CSV files (legacy, not used anymore)
+├── utils/                        # Utilities
+│   ├── naming.py                 # Naming generation
+│   ├── campaign_builder.py       # API requests
+│   ├── config_loader.py          # Configuration loading with caching
+│   ├── tier_utils.py             # Tier utilities
+│   └── logging.py                # Automatic logging
+└── logs.csv                      # Log of all created campaigns
 ```
 
-## Логирование
+## Logging
 
-Все созданные кампании автоматически логируются в `logs.csv`:
+All created campaigns are automatically logged to `logs.csv`:
 
-| Поле | Описание |
-|------|----------|
-| `campaign_name` | Название кампании (нейминг) |
-| `campaign_id` | ID созданной кампании (из API) |
-| `adset_id` | ID созданного адсета (из API) |
-| `created_at` | Дата и время создания |
+| Field | Description |
+|------|-------------|
+| `campaign_name` | Campaign name (naming) |
+| `campaign_id` | Created campaign ID (from API) |
+| `adset_id` | Created ad set ID (from API) |
+| `created_at` | Creation date and time |
 
-**Важно:** Запись добавляется только после успешного создания Campaign и Ad Set через API.
+**Important:** Entry is added only after successful creation of Campaign and Ad Set via API.
 
-## Обработка ошибок
+## Error Handling
 
-При ошибках API:
-- Показывается сообщение об ошибке
-- Создается CSV файл `launches/[campaign_name].csv` для ручной загрузки
-- Запись в `logs.csv` не добавляется
+On API errors:
+- Error message is shown
+- CSV files are not created, entry in `logs.csv` is not added if campaign/adset were not created
 
-## Дополнительная информация
+## Additional Information
 
-- Подробности работы с API: см. `instructions/api_integration.md`
-- Правила нейминга: см. `instructions/naming.md`
-- Структура CSV: см. `instructions/csv_structure.md`
-- Примеры запросов: см. `/examples`
+- API integration details: see `instructions/api_integration.md`
+- Naming rules: see `instructions/naming.md`
+- CSV structure: see `instructions/csv_structure.md`
+- Targeting rules: see `instructions/targeting.md`
+- Account management: see `instructions/accounts.md`
+- Examples: see `/examples`

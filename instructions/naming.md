@@ -1,78 +1,52 @@
 # Naming Rules
 
-Нейминг кампании формируется в следующем порядке:
+Campaign naming is formed in the following order:
 
-[OS]_[PROJECT]_[TIER]([COUNTRIES])_[GENDER]_[AGE]_[OPT MODEL][[EVENT?]]_[DATE]_[AUTOR]_[CBO/noCBO]_[BID STRATEGY]_[LANG]_[EXTRA?]
+[OS]_[TIER]([COUNTRIES])_[GENDER]_[AGE]_[OPT MODEL][[EVENT?]]_[DATE]_[AUTOR]_[CBO/noCBO]_[BID STRATEGY]_[LANG]_[EXTRA?]
 
-AND_LK_Tier-1(US)_M_21-65_CPA[ad_displayed_80]_16112025_YU_noCBO_bc_ENG_LK1
+AND_Tier-1(US)_M_21-65_CPA[ad_displayed_80]_16112025_YU_noCBO_bc_ENG_account_1
 
-## Правила для каждого элемента:
+## Rules for each element:
 
 ### OS
-значения:
+values:
 - AND
 - IOS
 
-### PROJECT
-Берётся из словаря `projects.json`:
-- project.name → project.alias
-
-**Структура проекта в `projects.json`:**
-```json
-{
-  "ProjectName": {
-    "alias": "PN",
-    "account_names": ["LK1", "LK2"],
-    "campaign_objective": "App promotion",
-    "link_object_id": "o:...",
-    "application_id": "x:...",
-    "object_store_url": "http://...",
-    "beneficiary": {
-      "default": "...",
-      "australia": "...",
-      "taiwan": "...",
-      "singapore": "..."
-    },
-    "payer": {
-      "default": "...",
-      "australia": "...",
-      "taiwan": "...",
-      "singapore": "..."
-    }
-  }
-}
-```
+### PROJECT (legacy)
+The current project uses only one project (`Mirai`), so the `[PROJECT]` segment in naming **is not used**.
+If multiple projects appear in the future, it can be restored by mapping `project.name` to an alias in `projects.json`.
 
 ### Tier
-значения (из `tiers.json`):
-- **Tier1** (в нейминге может быть `Tier-1` для читаемости)
+values (from `tiers.json`):
+- **Tier1** (in naming can be `Tier-1` for readability)
 - **Asia**
 - **Africa**
 - **Arabian**
 - **Europe**
-- **LatAm** (в нейминге может быть `Latam`)
+- **LatAm** (in naming can be `Latam`)
 - **CIS**
 - **Other**
-- **WW** (используется когда страны из разных тиров или более 5 стран)
+- **WW** (used when countries are from different tiers or more than 5 countries)
 
-**Определение тира:**
-1. Если пользователь указал тир напрямую (например, "Latam") — используется указанный тир
-2. Если указаны конкретные страны:
-   - Страны определяются по словарю `tiers.json` (из `examples/tiers_by_countries.csv`)
-   - Если все страны из одного тира → используется этот тир
-   - Если более 5 стран из разных тиров → используется `WW`
-   - Если 5 или менее стран → используется тир, к которому относятся страны (если один тир), иначе перечисляются страны
+**Tier determination:**
+1. If the user specified a tier directly (e.g., "Latam") — the specified tier is used
+2. If specific countries are specified:
+   - Countries are determined by the `tiers.json` dictionary (from `examples/tiers_by_countries.csv`)
+   - If all countries are from one tier → that tier is used
+   - If more than 5 countries from different tiers → `WW` is used
+   - If 5 or fewer countries → the tier to which the countries belong is used (if one tier), otherwise countries are listed
 
 ### Countries
-Страны формируются в строчку через запятую: `US,CA,GB`. Добавляются в круглые скобки, после тира.
+Countries are formed in a line separated by commas: `US,CA,GB`. Added in parentheses, after the tier.
 
-**Важно:** Используйте правильные коды стран (GB для Великобритании, не UK). Ограниченные страны (CU, IR, RU, SD) не должны использоваться в таргетинге (см. `targeting.md`).
+**Important:** Use correct country codes (GB for United Kingdom, not UK). Restricted countries (CU, IR, RU, SD) should not be used in targeting (see `targeting.md`).
 
-**Правила:**
-- Если таргетинг на весь тир → в скобках не указываются страны, только тир: `AND_LK_Latam_M_21-65_...`
-- Если указаны конкретные страны (5 или менее) → перечисляются в скобках: `AND_LK_Tier-1(US,CA)_M_21-65_...`
-- Если более 5 стран из одного тира → используется тир, страны перечисляются в скобках: `AND_LK_Latam(BR,MX,AR,CO,CL,PE,EC)_M_21-65_...`
-- Если более 5 стран из разных тиров → используется `WW`, страны перечисляются в скобках: `AND_LK_WW(US,CA,BR,MX,AR,CO,CL)_M_21-65_...`
+**Rules:**
+- If targeting entire tier → countries are not specified in parentheses, only tier: `AND_LK_Latam_M_21-65_...`
+- If specific countries are specified (5 or fewer) → listed in parentheses: `AND_LK_Tier-1(US,CA)_M_21-65_...`
+- If more than 5 countries from one tier → tier is used, countries are listed in parentheses: `AND_LK_Latam(BR,MX,AR,CO,CL,PE,EC)_M_21-65_...`
+- If more than 5 countries from different tiers → `WW` is used, countries are listed in parentheses: `AND_LK_WW(US,CA,BR,MX,AR,CO,CL)_M_21-65_...`
 
 ### Gender
 Men → M  
@@ -80,26 +54,26 @@ Women → F
 Both → MF 
 
 ### Age
-Любой диапазон, например `18-44` или `18-65+`. По умолчанию `18-65+`
+Any range, e.g., `18-44` or `18-65+`. Default `18-65+`
 
-### Модель оптимизации
-значения:
+### Optimization Model
+values:
 - CPI
 - CPA
 - tROAS
 
 ### Event
-Используется только при CPA.
-Берётся из словаря `events.json`.
+Used only for CPA.
+Taken from the `events.json` dictionary.
 
 ### Date
-Дата, в формате `DDMMYYYY`, по умолчанию указывается сегодняшняя
+Date in format `DDMMYYYY`, by default today's date is used
 
-### Autor
-Автор кампании, по умолчанию `KH`
+### Author
+Campaign author, default `KH`
 
-### Тип кампании
-значения:
+### Campaign Type
+values:
 - CBO
 - noCBO
 
@@ -109,25 +83,20 @@ Both → MF
  
 
 ### Language
-Берётся из словаря `languages.json` (EN, ES, PT…).
+Taken from the `languages.json` dictionary (EN, ES, PT…).
 
-**По умолчанию (если язык не указан):**
-- В нейминге используется `_ALL_`
-- В таргетинге таргетируются все языки (поле Locales остается пустым в финальном CSV)
+**By default (if language is not specified):**
+- In naming `_ALL_` is used
+- In targeting all languages are targeted (Locales field remains empty in final CSV)
 
-## Использование нейминга
+## Naming Usage
 
-**Перед созданием файла:**
-1. Сгенерированный нейминг **обязательно показывается пользователю**
-2. Запрашивается подтверждение: "Создать кампанию с этим неймингом?"
-3. Только после подтверждения пользователем создается файл
+1. Generated naming **must be shown to the user**
+2. Confirmation is requested: "Create campaign with this naming?"
+3. Only after user confirmation:
+   - Campaign is created via Facebook Marketing API
+   - Ad Set is created via Facebook Marketing API
+   - `Campaign Name` and `Ad Set Name` in API = generated naming
+   - Naming is written to `logs.csv` along with creation date
 
-**После подтверждения:**
-Сгенерированный нейминг применяется напрямую в `launches/[campaign_name].csv`:
-- **Campaign Name** = сгенерированный нейминг
-- **Ad Set Name** = сгенерированный нейминг (тот же)
-- **Имя файла** = `launches/[campaign_name].csv` (где `[campaign_name]` — это сгенерированный нейминг)
-
-Также нейминг записывается в `logs.csv` вместе с датой создания.
-
-Промежуточные файлы не создаются. Нейминг генерируется по правилам и используется в финальном CSV только после подтверждения пользователем.
+Separate CSV files (in the `launches/` directory) are no longer created — the system works only via API and `logs.csv`.

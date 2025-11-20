@@ -1,4 +1,5 @@
 {
   "Android": "AND",
-  "IOS": "IOS"
+  "IOS": "IOS",
+  "Web": "WEB"
 }

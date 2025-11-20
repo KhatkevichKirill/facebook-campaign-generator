@@ -2,16 +2,16 @@
 
 ## Overview
 
-Интеграция с Facebook Marketing API для создания кампаний и адсетов через POST запросы.
+Integration with Facebook Marketing API for creating campaigns and ad sets via POST requests.
 
 ## API Configuration
 
-Конфигурация API хранится в `dictionares/api_config.json`:
-- `access_token` — токен доступа к API (заполняется пользователем)
-- `api_version` — версия API (по умолчанию "v23.0")
-- `base_url` — базовый URL API
+API configuration is stored in `dictionares/api_config.json`:
+- `access_token` — API access token (filled by user)
+- `api_version` — API version (default "v23.0")
+- `base_url` — base API URL
 
-**Важно:** Токен доступа должен быть заполнен перед использованием API.
+**Important:** The access token must be filled before using the API.
 
 ## API Endpoints
 
@@ -30,20 +30,26 @@ POST /{account_id}/campaigns
 POST /{account_id}/adsets
 ```
 
+### Adlocales Updating
+```
+search?type=adlocale&q={language}
+```
+
+
 ## Campaign Creation Request
 
 ### Required Fields:
-- `account_id` — ID рекламного аккаунта (получается из `accounts.json` по выбранному названию из `project.account_names`)
-- `name` — название кампании (сгенерированный нейминг)
-- `objective` — цель кампании (из `objectives.json`, маппинг `project.campaign_objective`)
-- `status` — статус кампании (по умолчанию "PAUSED" или "ACTIVE")
-- `special_ad_categories` — специальные категории (по умолчанию `["NONE"]`)
+- `account_id` — Ad account ID (obtained from `accounts.json` by selected name from `project.account_names`)
+- `name` — Campaign name (generated naming)
+- `objective` — Campaign objective (from `objectives.json`, mapping of `project.campaign_objective`)
+- `status` — Campaign status (default "PAUSED" or "ACTIVE")
+- `special_ad_categories` — Special ad categories (default `["NONE"]`)
 
 ### Example Request:
 ```json
 {
   "account_id": "act_123456789",
-  "name": "AND_LK_Tier-1(US)_M_21-65_CPA[ad_displayed_40]_16112025_KH_noCBO_bc_ENG_LK1",
+  "name": "AND_Europe(IT)_M_21-65_CPA[ad_displayed_40]_16112025_KH_noCBO_bc_ENG_LK1",
   "objective": "APP_PROMOTION",
   "status": "PAUSED",
   "special_ad_categories": ["NONE"]
@@ -51,46 +57,46 @@ POST /{account_id}/adsets
 ```
 
 ### Response:
-Возвращает `campaign_id`, который используется для создания Ad Set.
+Returns `campaign_id`, which is used to create the Ad Set.
 
 ## Ad Set Creation Request
 
 ### Required Fields:
-- `account_id` — ID рекламного аккаунта (получается из `accounts.json` по выбранному названию из `project.account_names`)
-- `name` — название адсета (сгенерированный нейминг, тот же что и у кампании)
-- `campaign_id` — ID созданной кампании (получается из ответа создания кампании)
-- `daily_budget` — дневной бюджет (из параметров кампании)
-- `billing_event` — событие биллинга (всегда `"IMPRESSIONS"`)
-- `optimization_goal` — цель оптимизации (из `optimization_goals.json`, маппинг модели оптимизации)
-- `bid_strategy` — стратегия ставки (из `bid_strategies.json`)
-- `bid_amount` — значение ставки (только если `bid_strategy` = `"BID_CAP"`)
-- `promoted_object` — объект продвижения:
-  - `custom_event_type` — тип события (из `event_types.json`, маппинг из `events.json`)
-  - `custom_event_str` — конкретное имя события (из `events.json`, например "session_started_3")
-  - `object_store_url` — URL приложения в магазине (из `projects.json`)
-  - `application_id` — ID приложения (из `projects.json`, без префикса "x:")
+- `account_id` — Ad account ID (obtained from `accounts.json` by selected name from `project.account_names`)
+- `name` — Ad set name (generated naming, same as campaign)
+- `campaign_id` — Created campaign ID (obtained from campaign creation response)
+- `daily_budget` — Daily budget (from campaign parameters)
+- `billing_event` — Billing event (always `"IMPRESSIONS"`)
+- `optimization_goal` — Optimization goal (from `optimization_goals.json`, mapping of optimization model)
+- `bid_strategy` — Bid strategy (from `bid_strategies.json`)
+- `bid_amount` — Bid value (only if `bid_strategy` = `"BID_CAP"`)
+- `promoted_object` — Promoted object:
+  - `custom_event_type` — Event type (from `event_types.json`, mapping from `events.json`)
+  - `custom_event_str` — Specific event name (from `events.json`, e.g., "session_started_3")
+  - `object_store_url` — App store URL (from `projects.json`)
+  - `application_id` — Application ID (from `projects.json`, without "x:" prefix)
 
 ### Targeting Fields:
-- `targeting` — объект таргетинга:
-  - `geo_locations` — география:
-    - `countries` — массив ISO-кодов стран:
-      - Если таргетинг на весь тир → все страны тира из `tiers.json`
-      - Если указаны конкретные страны → массив указанных стран
-      - Если более 5 стран из разных тиров → все указанные страны (в нейминге используется WW)
-    - `excluded_countries` — исключенные страны (если есть)
-  - `age_min` — минимальный возраст
-  - `age_max` — максимальный возраст (65+ → 65)
-  - `genders` — массив гендеров: `[1]` для Men, `[2]` для Women, `[1, 2]` для Both
-  - `locales` — массив языков (если язык указан, иначе пустой массив для всех языков)
-  - `user_os` — массив операционных систем: `["android"]` для Android, `["ios"]` для iOS
-  - `targeting_automation` — объект автоматизации таргетинга:
-    - `advantage_audience` — флаг Advantage audience (1 или 0, обязательное поле)
+- `targeting` — Targeting object:
+  - `geo_locations` — Geography:
+    - `countries` — Array of ISO country codes:
+      - If targeting entire tier → all tier countries from `tiers.json`
+      - If specific countries are specified → array of specified countries
+      - If more than 5 countries from different tiers → all specified countries (WW is used in naming)
+    - `excluded_countries` — Excluded countries (if any)
+  - `age_min` — Minimum age
+  - `age_max` — Maximum age (65+ → 65)
+  - `genders` — Array of genders: `[1]` for Men, `[2]` for Women, `[1, 2]` for Both
+  - `locales` — Array of languages (if language is specified, otherwise empty array for all languages)
+  - `user_os` — Array of operating systems: `["android"]` for Android, `["ios"]` for iOS
+  - `targeting_automation` — Targeting automation object:
+    - `advantage_audience` — Advantage audience flag (1 or 0, required field)
 
 ### Example Request:
 ```json
 {
   "account_id": "act_123456789",
-  "name": "AND_LK_Tier-1(US)_M_21-65_CPA[ad_displayed_40]_16112025_KH_noCBO_bc_ENG_LK1",
+  "name": "AND_Tier-1(US)_M_21-65_CPA[ad_displayed_40]_16112025_KH_noCBO_bc_ENG_AK1",
   "campaign_id": "123456789012345",
   "daily_budget": 25000,
   "billing_event": "IMPRESSIONS",
@@ -100,8 +106,8 @@ POST /{account_id}/adsets
   "promoted_object": {
     "custom_event_type": "OTHER",
     "custom_event_str": "ad_displayed_40",
-    "object_store_url": "http://play.google.com/store/apps/details?id=com.panda.likerro",
-    "application_id": "627096341193498"
+    "object_store_url": "https://play.google.com/store/apps/details?id=com.guardiangridgames.hidden",
+    "application_id": "627096341267498"
   },
   "targeting": {
     "geo_locations": {
@@ -121,31 +127,31 @@ POST /{account_id}/adsets
 ## Data Mapping
 
 ### Objectives
-Маппинг из `campaign_objective` в `objectives.json`:
+Mapping from `campaign_objective` to `objectives.json`:
 - "App promotion" → "APP_PROMOTION"
 
 ### Optimization Goals
-Маппинг из модели оптимизации в `optimization_goals.json`:
+Mapping from optimization model to `optimization_goals.json`:
 - "CPA" → "OFFSITE_CONVERSIONS"
 - "CPI" → "APP_INSTALLS"
 - "tROAS" → "VALUE_OPTIMIZATION"
 
 ### Bid Strategies
-Маппинг из стратегии ставки в `bid_strategies.json`:
-- "Bid cap" → "BID_CAP" (требует `bid_amount`)
+Mapping from bid strategy to `bid_strategies.json`:
+- "Bid cap" → "BID_CAP" (requires `bid_amount`)
 - "Cost per result goal" → "COST_CAP"
 - "Lower cost" → "LOWEST_COST_WITHOUT_BID_CAP"
 - "Ad impression" → "COST_PER_IMPRESSION"
 
 ### Events (for CPA)
-События из `events.json` маппятся на типы через `event_types.json`:
-- "ad_displayed_20" → тип "OTHER" (кастомное событие)
-- "ad_displayed_40" → тип "OTHER" (кастомное событие)
-- "session_started_3/4/5" → тип "OTHER" (кастомное событие)
+Events from `events.json` are mapped to types via `event_types.json`:
+- "ad_displayed_20" → type "OTHER" (custom event)
+- "ad_displayed_40" → type "OTHER" (custom event)
+- "session_started_3/4/5" → type "OTHER" (custom event)
 
-**Важно:** 
-- `ad_displayed_20` и `ad_displayed_40` — это кастомные события (OTHER), не AD_IMPRESSION
-- AD_IMPRESSION используется **только** для tROAS/ROAS кампаний, где на основе этих событий используется Value
+**Important:** 
+- `ad_displayed_20` and `ad_displayed_40` are custom events (OTHER), not AD_IMPRESSION
+- AD_IMPRESSION is used **only** for tROAS/ROAS campaigns, where Value is used based on these events
 
 ### Gender Mapping
 - "Men" → `[1]`
@@ -153,45 +159,33 @@ POST /{account_id}/adsets
 - "Both" → `[1, 2]`
 
 ### Language Mapping
-Языки из `languages.json` маппятся на Facebook locale IDs:
+Languages from `languages.json` are mapped to Facebook locale IDs:
 - "EN" → `[6003, 6004]` (English US, English UK)
 - "ES" → `[6005]` (Spanish)
-- И т.д.
+- etc.
 
-Если язык не указан, `locales` остается пустым массивом `[]` (таргетинг всех языков).
+If language is not specified, `locales` remains an empty array `[]` (targeting all languages).
 
 ## Workflow
 
-**API является основным методом создания кампаний. CSV файл создается только в случае ошибки API для ручной загрузки.**
+**API is the only method for creating campaigns. CSV files are no longer created.**
 
-1. Генерируется нейминг кампании
-2. Показывается нейминг пользователю для подтверждения
-3. После подтверждения:
-   - **Выбор аккаунта**: Если у проекта несколько `account_names`, показывается список названий для выбора
-   - **Маппинг аккаунта**: Выбранное название маппится на `account_id` через словарь `accounts.json`
-   - **Создается Campaign через API** (используется `account_id`, получается `campaign_id`)
-   - **Создается Ad Set через API** (используется `account_id` и `campaign_id`, получается `adset_id`)
-   - **Автоматически добавляется запись в `logs.csv`** с полями:
-     - `campaign_name` — сгенерированный нейминг
-     - `campaign_id` — ID созданной кампании
-     - `adset_id` — ID созданного адсета
-     - `created_at` — дата и время создания
-
-### Fallback при ошибках API
-
-Если при создании Campaign или Ad Set через API произошла ошибка:
-- **Создается CSV файл** `launches/[campaign_name].csv` для ручной загрузки
-- Запись в `logs.csv` **НЕ добавляется** (так как кампания не была создана)
-- Пользователь может загрузить CSV файл вручную через Facebook Ads Manager
-
-**Важно:** 
-- **По умолчанию используется API.** CSV создается только как fallback при ошибках.
-- Запись в `logs.csv` добавляется автоматически только после успешного создания Campaign и Ad Set.
-- При ошибках API запись в `logs.csv` не добавляется, но создается CSV файл для ручной загрузки.
+1. Campaign naming is generated
+2. Naming is shown to the user for confirmation
+3. After confirmation:
+   - **Account selection**: If the project has multiple `account_names`, a list of names is shown for selection
+   - **Account mapping**: The selected name is mapped to `account_id` via the `accounts.json` dictionary
+   - **Campaign is created via API** (uses `account_id`, receives `campaign_id`)
+   - **Ad Set is created via API** (uses `account_id` and `campaign_id`, receives `adset_id`)
+   - **Entry is automatically added to `logs.csv`** with fields:
+     - `campaign_name` — generated naming
+     - `campaign_id` — created campaign ID
+     - `adset_id` — created ad set ID
+     - `created_at` — creation date and time
 
 ## Automatic Logging
 
-После успешного создания Campaign и Ad Set автоматически добавляется запись в `logs.csv`:
+After successful creation of Campaign and Ad Set, an entry is automatically added to `logs.csv`:
 
 ```python
 from utils.logging import log_campaign_creation
@@ -204,13 +198,13 @@ log_campaign_creation(
 )
 ```
 
-Или вручную через CSV:
+Or manually via CSV:
 
 ```python
 import csv
 from datetime import datetime
 
-# Добавление записи в logs.csv
+# Adding entry to logs.csv
 with open('logs.csv', 'a', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     writer.writerow([
@@ -223,9 +217,9 @@ with open('logs.csv', 'a', newline='', encoding='utf-8') as f:
 
 ## Error Handling
 
-При ошибках API:
-- Показывать пользователю сообщение об ошибке
-- **Создается CSV файл** `launches/[campaign_name].csv` для ручной загрузки
-- Запись в `logs.csv` **НЕ добавляется** (так как кампания не была создана через API)
-- Пользователь может загрузить CSV файл вручную через Facebook Ads Manager
+On API errors:
+- Show error message to user
+- **Do not create any CSV files** — all campaigns are managed only via API
+- Entry in `logs.csv` is **NOT added** if campaign or ad set were not created via API
 
+        

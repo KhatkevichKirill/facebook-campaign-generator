@@ -1,8 +1,4 @@
 {
-  "session_started_3": "OTHER",
-  "session_started_4": "OTHER",
-  "session_started_5": "OTHER",
-  "ad_displayed_20": "OTHER",
-  "ad_displayed_40": "OTHER"
+  "CUSTOM_EVENT_1": "OTHER"
 }
 
