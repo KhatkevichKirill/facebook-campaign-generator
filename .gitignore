@@ -34,12 +34,3 @@ venv.bak/
 *.swo
 *~
 .DS_Store
-
-# Конфиденциальные данные
-dictionares/api_config.json
-
-# Логи (опционально - можно оставить, если нужна история)
-# logs.csv
-
-# Временные файлы запусков
-launches/*.csv
