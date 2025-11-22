@@ -1,0 +1,23 @@
+{
+  "Mirai": {
+    "account_names": ["account_1", "account_2", "account_3"],
+    "campaign_objective": ["App promotion", "Sales"],
+    "link_object_id": "10587553655015800",
+    "instagram_object_id": "1784144844826522011",
+    "application_id": "12242266881440745",
+    "pixel_id": "1257023221728245",
+    "object_store_url": ["https://play.google.com/store/apps/details?id=com.guardiangridgames.hidden", "https://apps.apple.com/us/app/facebook/id284882215"],
+    "beneficiary": {
+      "default": "Facebook",
+      "australia": "",
+      "taiwan": "",
+      "singapore": ""
+    },
+    "payer": {
+      "default": "Facebook",
+      "australia": "",
+      "taiwan": "",
+      "singapore": ""
+    }
+  }
+}

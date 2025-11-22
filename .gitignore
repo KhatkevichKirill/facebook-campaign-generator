@@ -34,3 +34,9 @@ venv.bak/
 *.swo
 *~
 .DS_Store
+
+# Local Configuration & Sensitive Data
+dictionares/api_config.json
+dictionares/accounts.json
+dictionares/projects.json
+logs.csv
